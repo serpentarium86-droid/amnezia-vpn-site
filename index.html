@@ -69,14 +69,13 @@ h1{font-size:3em;font-weight:900;margin-bottom:20px;background:linear-gradient(9
 <h1>Amnezia VPN</h1>
 <p class="subtitle" id="subtitle">Стабильный доступ к зарубежным сервисам и нейросетям. Забудьте об ограничениях операторов и белых списках. Скачайте проверенное приложение для Android.</p>
 
-<!-- Кнопка открывает модальное окно -->
 <div class="download-wrapper" onclick="openDownloadModal()">
   <img src="download-btn.jpg" alt="Скачать" class="download-img" id="downloadImg">
 </div>
 
 <p class="download-sub" id="downloadSub">APK для Android</p>
 
-<!-- Кнопки поменяны местами: сначала Тариф, потом Документы -->
+<!-- ПОРЯДОК КНОПОК: сначала Тариф, потом Документы -->
 <div class="action-buttons">
 <button class="action-btn" onclick="openModal('tariff')" id="btnTariff">Тариф</button>
 <button class="action-btn" onclick="openModal('offer')" id="btnDocs">Документы</button>
@@ -91,7 +90,6 @@ h1{font-size:3em;font-weight:900;margin-bottom:20px;background:linear-gradient(9
 <div class="footer"><p id="footer">© 2026 Amnezia VPN • Android APK</p></div>
 </div>
 
-<!-- Модальное окно скачивания -->
 <div class="modal" id="downloadModal">
 <div class="modal-content">
 <div class="modal-title" id="downloadModalTitle">СКАЧИВАНИЕ</div>
@@ -100,13 +98,12 @@ h1{font-size:3em;font-weight:900;margin-bottom:20px;background:linear-gradient(9
 <div class="download-link-box" id="downloadLinkBox">http://ya-amnezia-01.store:8447/app.apk</div>
 <a href="http://ya-amnezia-01.store:8447/app.apk" class="direct-link" id="directLinkBtn">⬇ СКАЧАТЬ</a>
 <br>
-<button class="copy-btn" onclick="copyLink()" id="copyBtn">📋 Копировать ссылку</button>
+<button class="copy-btn" onclick="copyLink()" id="copyBtn"> Копировать ссылку</button>
 </div>
 <button class="modal-close" onclick="closeModal('download')" id="closeDownloadBtn">Закрыть</button>
 </div>
 </div>
 
-<!-- Модальное окно оферты -->
 <div class="modal" id="offerModal">
 <div class="modal-content">
 <div class="modal-title" id="offerTitle">ПУБЛИЧНАЯ ОФЕРТА</div>
@@ -130,7 +127,6 @@ h1{font-size:3em;font-weight:900;margin-bottom:20px;background:linear-gradient(9
 </div>
 </div>
 
-<!-- Модальное окно тарифов -->
 <div class="modal" id="tariffModal">
 <div class="modal-content">
 <div class="modal-title" id="tariffTitle">ТАРИФЫ AMNEZIA VPN</div>
@@ -160,7 +156,6 @@ function copyLink() {
     btn.textContent = '✅ Скопировано!';
     setTimeout(() => { btn.textContent = originalText; }, 2000);
   }).catch(() => {
-    // Fallback для старых браузеров
     const textArea = document.createElement('textarea');
     textArea.value = downloadURL;
     document.body.appendChild(textArea);
@@ -191,7 +186,7 @@ const translations = {
     downloadModalTitle: 'СКАЧИВАНИЕ',
     downloadModalText: 'Нажмите на зелёную кнопку для скачивания. Если не работает — скопируйте ссылку и вставьте в браузер.',
     directLinkBtn: '⬇ СКАЧАТЬ',
-    copyBtn: ' Копировать ссылку',
+    copyBtn: '📋 Копировать ссылку',
     closeDownloadBtn: 'Закрыть',
     offerTitle: 'ПУБЛИЧНАЯ ОФЕРТА',
     o1h: '1. Общие положения', o1p: '1.1. Настоящий документ является официальным публичным предложением (офертой) VPN-сервиса.',
