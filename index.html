@@ -6,21 +6,24 @@
 <title>Amnezia VPN — Стабильный интернет для Android</title>
 <style>
 *{margin:0;padding:0;box-sizing:border-box}
-body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;background:linear-gradient(180deg,#1E3A8A 0%,#0F172A 100%);color:#fff;min-height:100vh;display:flex;align-items:center;justify-content:center;padding:20px}
+body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;background:linear-gradient(180deg,#0a0e27 0%,#1a1f3a 50%,#0f1429 100%);color:#fff;min-height:100vh;display:flex;align-items:center;justify-content:center;padding:20px}
 .container{max-width:600px;text-align:center}
-.lang-switcher{position:fixed;top:20px;right:20px;z-index:100;background:linear-gradient(180deg,rgba(30,58,138,0.6) 0%,rgba(15,23,42,0.6) 100%);border:2px solid rgba(59,130,246,0.5);border-radius:50px;padding:8px 16px;cursor:pointer;font-size:1.5em;transition:all 0.2s;box-shadow:0 4px 15px rgba(0,0,0,0.4);display:flex;align-items:center;gap:8px}
+.lang-switcher{position:fixed;top:20px;right:20px;z-index:100;background:linear-gradient(180deg,rgba(30,58,138,0.6) 0%,rgba(15,23,42,0.6) 100%);border:2px solid rgba(59,130,246,0.5);border-radius:50px;padding:8px 16px;cursor:pointer;font-size:1.2em;transition:all 0.2s;box-shadow:0 4px 15px rgba(0,0,0,0.4);display:flex;align-items:center;gap:8px}
 .lang-switcher:hover{transform:scale(1.1);border-color:#3B82F6;box-shadow:0 6px 20px rgba(59,130,246,0.5)}
 .lang-switcher:active{transform:scale(0.95)}
-.lang-label{font-size:0.45em;font-weight:bold;color:#93C5FD;letter-spacing:1px}
+.lang-flag{width:24px;height:16px;border-radius:2px;overflow:hidden;display:inline-block}
+.lang-label{font-size:0.7em;font-weight:bold;color:#93C5FD;letter-spacing:1px}
 .logo{width:200px;height:200px;margin:0 auto 30px;border-radius:50%;overflow:hidden;box-shadow:0 10px 40px rgba(59,130,246,0.4);border:3px solid rgba(99,102,241,0.5)}
 .logo img{width:100%;height:100%;object-fit:cover}
 h1{font-size:3em;font-weight:900;margin-bottom:20px;background:linear-gradient(90deg,#3B82F6,#6366F1);-webkit-background-clip:text;-webkit-text-fill-color:transparent;letter-spacing:-1px}
 .subtitle{font-size:1.3em;color:#93C5FD;margin-bottom:40px;line-height:1.6}
-.download-btn{display:inline-block;background:linear-gradient(135deg,#3B82F6 0%,#6366F1 100%);color:#fff;padding:20px 50px;border-radius:12px;text-decoration:none;margin:20px 0 40px;border:3px solid #000;transition:all 0.2s;text-transform:uppercase;letter-spacing:1px;box-shadow:0 4px 15px rgba(0,0,0,0.5)}
-.download-btn:hover{transform:translateY(-2px);box-shadow:0 8px 25px rgba(59,130,246,0.5)}
+.download-btn{display:inline-block;background:linear-gradient(135deg,#3B82F6 0%,#6366F1 100%);color:#fff;padding:25px 60px;border-radius:16px;text-decoration:none;margin:20px 0 10px;transition:all 0.3s;position:relative;overflow:hidden;box-shadow:0 10px 30px rgba(59,130,246,0.4),0 0 60px rgba(99,102,241,0.2)}
+.download-btn::before{content:'';position:absolute;top:0;left:-100%;width:100%;height:100%;background:linear-gradient(90deg,transparent,rgba(255,255,255,0.3),transparent);transition:left 0.5s}
+.download-btn:hover::before{left:100%}
+.download-btn:hover{transform:translateY(-3px);box-shadow:0 15px 40px rgba(59,130,246,0.6),0 0 80px rgba(99,102,241,0.3)}
 .download-btn:active{transform:translateY(0)}
-.download-main{font-size:1.8em;font-weight:900;display:block;text-shadow:2px 2px 0 #000,-2px -2px 0 #000,2px -2px 0 #000,-2px 2px 0 #000,0 2px 0 #000,0 -2px 0 #000,2px 0 0 #000,-2px 0 0 #000;letter-spacing:2px}
-.download-sub{font-size:1.1em;font-weight:600;display:block;margin-top:5px;letter-spacing:1px}
+.download-main{font-size:2em;font-weight:900;display:block;letter-spacing:3px;text-shadow:0 2px 10px rgba(0,0,0,0.3)}
+.download-sub{font-size:1em;font-weight:600;display:block;margin-top:8px;letter-spacing:1px;opacity:0.9}
 .action-buttons{display:flex;gap:15px;justify-content:center;margin:30px 0;flex-wrap:wrap}
 .action-btn{background:linear-gradient(180deg,rgba(30,58,138,0.5) 0%,rgba(15,23,42,0.5) 100%);color:#93C5FD;border:2px solid rgba(59,130,246,0.5);padding:18px 40px;border-radius:12px;font-size:1.1em;font-weight:600;cursor:pointer;transition:all 0.2s;text-decoration:none;display:inline-block;box-shadow:0 6px 0 rgba(2,6,23,0.6),0 10px 20px rgba(0,0,0,0.4)}
 .action-btn:hover{background:linear-gradient(180deg,rgba(59,130,246,0.5) 0%,rgba(30,58,138,0.5) 100%);border-color:#3B82F6;transform:translateY(-2px);box-shadow:0 8px 0 rgba(2,6,23,0.6),0 14px 24px rgba(0,0,0,0.5)}
@@ -42,16 +45,16 @@ h1{font-size:3em;font-weight:900;margin-bottom:20px;background:linear-gradient(9
 .modal-text p{margin-bottom:12px}
 .modal-text ul{margin:10px 0 15px 20px}
 .modal-text li{margin-bottom:8px}
-.modal-close{display:block;margin:30px auto 0;background:linear-gradient(135deg,#3B82F6 0%,#6366F1 100%);color:#fff;border:2px solid #000;padding:15px 40px;border-radius:12px;font-size:1em;font-weight:600;cursor:pointer;transition:all 0.2s}
+.modal-close{display:block;margin:30px auto 0;background:linear-gradient(135deg,#3B82F6 0%,#6366F1 100%);color:#fff;border:none;padding:15px 40px;border-radius:12px;font-size:1em;font-weight:600;cursor:pointer;transition:all 0.2s}
 .modal-close:hover{transform:translateY(-2px);box-shadow:0 8px 25px rgba(59,130,246,0.5)}
 .modal-close:active{transform:translateY(0)}
-@media(max-width:600px){h1{font-size:2.2em}.features{grid-template-columns:1fr}.download-btn{padding:18px 40px}.download-main{font-size:1.5em}.download-sub{font-size:1em}.modal-content{margin:20px auto;padding:20px}.action-buttons{flex-direction:column}.lang-switcher{top:10px;right:10px;padding:6px 12px;font-size:1.3em}}
+@media(max-width:600px){h1{font-size:2.2em}.features{grid-template-columns:1fr}.download-btn{padding:20px 40px}.download-main{font-size:1.6em}.download-sub{font-size:0.9em}.modal-content{margin:20px auto;padding:20px}.action-buttons{flex-direction:column}.lang-switcher{top:10px;right:10px;padding:6px 12px}}
 </style>
 </head>
 <body>
 
 <button class="lang-switcher" id="langBtn" onclick="toggleLang()">
-<span id="langFlag">🇷🇺</span>
+<span class="lang-flag" id="langFlag"></span>
 <span class="lang-label" id="langLabel">RU</span>
 </button>
 
@@ -67,7 +70,7 @@ h1{font-size:3em;font-weight:900;margin-bottom:20px;background:linear-gradient(9
 <button class="action-btn" onclick="openModal('tariff')" id="btnTariff">Тариф</button>
 </div>
 <div class="features">
-<div class="feature"><div class="feature-icon"></div><div class="feature-title" id="f1t">Быстрая скорость</div><div class="feature-text" id="f1d">22 сервера для оптимального подключения</div></div>
+<div class="feature"><div class="feature-icon">⚡</div><div class="feature-title" id="f1t">Быстрая скорость</div><div class="feature-text" id="f1d">22 сервера для оптимального подключения</div></div>
 <div class="feature"><div class="feature-icon">🔄</div><div class="feature-title" id="f2t">Автообновление</div><div class="feature-text" id="f2d">Не нужно переустанавливать вручную</div></div>
 <div class="feature"><div class="feature-icon">🔒</div><div class="feature-title" id="f3t">Безопасность</div><div class="feature-text" id="f3d">Защита данных и приватность</div></div>
 <div class="feature"><div class="feature-icon">📱</div><div class="feature-title" id="f4t">Все Android</div><div class="feature-text" id="f4d">Работает на всех Android-устройствах</div></div>
@@ -115,6 +118,11 @@ h1{font-size:3em;font-weight:900;margin-bottom:20px;background:linear-gradient(9
 </div>
 
 <script>
+const flagSVG = {
+  ru: '<svg viewBox="0 0 36 24" xmlns="http://www.w3.org/2000/svg"><rect width="36" height="8" fill="#fff"/><rect y="8" width="36" height="8" fill="#0039A6"/><rect y="16" width="36" height="8" fill="#D52B1E"/></svg>',
+  en: '<svg viewBox="0 0 60 30" xmlns="http://www.w3.org/2000/svg"><clipPath id="s"><path d="M0,0 v30 h60 v-30 z"/></clipPath><clipPath id="t"><path d="M30,15 h30 v15 z v15 h-30 z h-30 v-15 z v-15 h30 z"/></clipPath><g clip-path="url(#s)"><path d="M0,0 v30 h60 v-30 z" fill="#012169"/><path d="M0,0 L60,30 M60,0 L0,30" stroke="#fff" stroke-width="6"/><path d="M0,0 L60,30 M60,0 L0,30" clip-path="url(#t)" stroke="#C8102E" stroke-width="4"/><path d="M30,0 v30 M0,15 h60" stroke="#fff" stroke-width="10"/><path d="M30,0 v30 M0,15 h60" stroke="#C8102E" stroke-width="6"/></g></svg>'
+};
+
 const translations = {
   ru: {
     subtitle: 'Нужен стабильный интернет для навигатора, музыки и мессенджеров? Держите проверенное приложение для Android.',
@@ -146,7 +154,7 @@ const translations = {
     t2h: 'Подписка', t2p: '<b>110 руб</b> — 1 месяц подписки',
     t3h: 'Оплата', t3p: 'Оплата производится через СБП (RollyPay).',
     closeBtn: 'Закрыть',
-    langLabel: 'RU', langFlag: '🇺'
+    langLabel: 'RU'
   },
   en: {
     subtitle: 'Need stable internet for navigation, music and messengers? Get a trusted app for Android.',
@@ -178,7 +186,7 @@ const translations = {
     t2h: 'Subscription', t2p: '<b>110 rub</b> — 1 month subscription',
     t3h: 'Payment', t3p: 'Payment is made via SBP (RollyPay).',
     closeBtn: 'Close',
-    langLabel: 'EN', langFlag: '🇬🇧'
+    langLabel: 'EN'
   }
 };
 
@@ -196,7 +204,7 @@ function applyLang() {
   document.getElementById('f3t').textContent = t.f3t; document.getElementById('f3d').textContent = t.f3d;
   document.getElementById('f4t').textContent = t.f4t; document.getElementById('f4d').textContent = t.f4d;
   document.getElementById('footer').textContent = t.footer;
-  document.getElementById('langFlag').textContent = t.langFlag;
+  document.getElementById('langFlag').innerHTML = flagSVG[currentLang];
   document.getElementById('langLabel').textContent = t.langLabel;
   document.getElementById('offerTitle').textContent = t.offerTitle;
   document.getElementById('o1h').textContent = t.o1h; document.getElementById('o1p').textContent = t.o1p;
