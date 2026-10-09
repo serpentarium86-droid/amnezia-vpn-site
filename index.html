@@ -17,11 +17,16 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;b
 .logo img{width:100%;height:100%;object-fit:cover}
 h1{font-size:3em;font-weight:900;margin-bottom:20px;background:linear-gradient(90deg,#3B82F6,#6366F1);-webkit-background-clip:text;-webkit-text-fill-color:transparent;letter-spacing:-1px}
 .subtitle{font-size:1.2em;color:#93C5FD;margin-bottom:40px;line-height:1.6}
-.download-wrapper{display:inline-block;margin:20px auto 10px;transition:all 0.3s;filter:drop-shadow(0 8px 25px rgba(59,130,246,0.4));border-radius:32px;overflow:hidden;max-width:280px;width:100%;height:140px;cursor:pointer;text-decoration:none}
-.download-wrapper:hover{transform:scale(1.03);filter:drop-shadow(0 12px 35px rgba(99,102,241,0.6))}
-.download-wrapper:active{transform:scale(0.98)}
-.download-img{width:100%;height:100%;object-fit:cover;object-position:center 30%;display:block}
-.download-sub{font-size:1em;font-weight:600;color:#93C5FD;margin-top:10px;letter-spacing:1px}
+
+/* CSS-КНОПКА СКАЧАТЬ */
+.download-btn-wrapper{display:inline-block;margin:20px auto 10px}
+.download-btn{display:inline-block;background:linear-gradient(135deg,#3B82F6 0%,#8B5CF6 50%,#A855F7 100%);color:#fff;text-decoration:none;padding:25px 60px;border-radius:50px;font-size:1.8em;font-weight:900;letter-spacing:3px;text-transform:uppercase;position:relative;overflow:hidden;transition:all 0.3s;box-shadow:0 10px 40px rgba(59,130,246,0.5),0 0 80px rgba(139,92,246,0.3),inset 0 2px 4px rgba(255,255,255,0.3)}
+.download-btn::before{content:'';position:absolute;top:0;left:-100%;width:100%;height:100%;background:linear-gradient(90deg,transparent,rgba(255,255,255,0.4),transparent);transition:left 0.6s}
+.download-btn:hover::before{left:100%}
+.download-btn:hover{transform:translateY(-3px) scale(1.02);box-shadow:0 15px 50px rgba(59,130,246,0.7),0 0 100px rgba(139,92,246,0.5),inset 0 2px 4px rgba(255,255,255,0.4)}
+.download-btn:active{transform:translateY(0) scale(0.98);box-shadow:0 5px 20px rgba(59,130,246,0.4),0 0 40px rgba(139,92,246,0.2)}
+.download-sub{font-size:1em;font-weight:600;color:#93C5FD;margin-top:15px;letter-spacing:1px}
+
 .action-buttons{display:flex;gap:15px;justify-content:center;margin:30px 0;flex-wrap:wrap}
 .action-btn{background:linear-gradient(180deg,rgba(30,58,138,0.5) 0%,rgba(15,23,42,0.5) 100%);color:#93C5FD;border:2px solid rgba(59,130,246,0.5);padding:18px 40px;border-radius:12px;font-size:1.1em;font-weight:600;cursor:pointer;transition:all 0.2s;text-decoration:none;display:inline-block;box-shadow:0 6px 0 rgba(2,6,23,0.6),0 10px 20px rgba(0,0,0,0.4)}
 .action-btn:hover{background:linear-gradient(180deg,rgba(59,130,246,0.5) 0%,rgba(30,58,138,0.5) 100%);border-color:#3B82F6;transform:translateY(-2px);box-shadow:0 8px 0 rgba(2,6,23,0.6),0 14px 24px rgba(0,0,0,0.5)}
@@ -45,14 +50,7 @@ h1{font-size:3em;font-weight:900;margin-bottom:20px;background:linear-gradient(9
 .modal-close{display:block;margin:30px auto 0;background:linear-gradient(135deg,#3B82F6 0%,#6366F1 100%);color:#fff;border:none;padding:15px 40px;border-radius:12px;font-size:1em;font-weight:600;cursor:pointer;transition:all 0.2s}
 .modal-close:hover{transform:translateY(-2px);box-shadow:0 8px 25px rgba(59,130,246,0.5)}
 .modal-close:active{transform:translateY(0)}
-.download-modal-text{text-align:center;color:#93C5FD;line-height:1.6}
-.download-link-box{background:rgba(0,0,0,0.3);border:1px solid rgba(59,130,246,0.3);border-radius:8px;padding:15px;margin:20px 0;word-break:break-all;font-size:0.9em;color:#64748B}
-.copy-btn{background:linear-gradient(135deg,#3B82F6 0%,#6366F1 100%);color:#fff;border:none;padding:12px 30px;border-radius:8px;font-size:1em;font-weight:600;cursor:pointer;margin:10px 5px;transition:all 0.2s}
-.copy-btn:hover{transform:translateY(-2px);box-shadow:0 8px 25px rgba(59,130,246,0.5)}
-.copy-btn:active{transform:translateY(0)}
-.direct-link{display:inline-block;background:linear-gradient(135deg,#10b981 0%,#059669 100%);color:#fff;text-decoration:none;padding:15px 40px;border-radius:12px;font-size:1.1em;font-weight:700;margin:15px 5px;transition:all 0.2s;box-shadow:0 6px 20px rgba(16,185,129,0.4)}
-.direct-link:hover{transform:translateY(-2px);box-shadow:0 10px 30px rgba(16,185,129,0.6)}
-@media(max-width:600px){h1{font-size:2.2em}.features{grid-template-columns:1fr}.download-wrapper{max-width:240px;height:120px}.download-sub{font-size:0.9em}.modal-content{margin:20px auto;padding:20px}.action-buttons{flex-direction:column}.lang-switcher{top:10px;right:10px;padding:6px 12px}}
+@media(max-width:600px){h1{font-size:2.2em}.features{grid-template-columns:1fr}.download-btn{padding:20px 40px;font-size:1.4em}.download-sub{font-size:0.9em}.modal-content{margin:20px auto;padding:20px}.action-buttons{flex-direction:column}.lang-switcher{top:10px;right:10px;padding:6px 12px}}
 </style>
 </head>
 <body>
@@ -69,13 +67,12 @@ h1{font-size:3em;font-weight:900;margin-bottom:20px;background:linear-gradient(9
 <h1>Amnezia VPN</h1>
 <p class="subtitle" id="subtitle">Стабильный доступ к зарубежным сервисам и нейросетям. Забудьте об ограничениях операторов и белых списках. Скачайте проверенное приложение для Android.</p>
 
-<div class="download-wrapper" onclick="openDownloadModal()">
-  <img src="download-btn.jpg" alt="Скачать" class="download-img" id="downloadImg">
+<!-- CSS-КНОПКА СКАЧАТЬ -->
+<div class="download-btn-wrapper">
+  <a href="https://github.com/serpentarium86-droid/amnezia-vpn-site/releases/latest/download/Amnezia-VPN.2.apk" class="download-btn" id="downloadBtn" target="_blank" rel="noopener noreferrer">СКАЧАТЬ</a>
 </div>
-
 <p class="download-sub" id="downloadSub">APK для Android</p>
 
-<!-- ПОРЯДОК КНОПОК: сначала Тариф, потом Документы -->
 <div class="action-buttons">
 <button class="action-btn" onclick="openModal('tariff')" id="btnTariff">Тариф</button>
 <button class="action-btn" onclick="openModal('offer')" id="btnDocs">Документы</button>
@@ -85,23 +82,9 @@ h1{font-size:3em;font-weight:900;margin-bottom:20px;background:linear-gradient(9
 <div class="feature"><div class="feature-icon"></div><div class="feature-title" id="f1t">Быстрая скорость</div><div class="feature-text" id="f1d">22 сервера для оптимального подключения</div></div>
 <div class="feature"><div class="feature-icon">🛡️</div><div class="feature-title" id="f2t">Доступ при блокировках</div><div class="feature-text" id="f2d">Работает при ограничениях операторов сети</div></div>
 <div class="feature"><div class="feature-icon">🔒</div><div class="feature-title" id="f3t">Безопасность</div><div class="feature-text" id="f3d">Защита данных и приватность</div></div>
-<div class="feature"><div class="feature-icon"></div><div class="feature-title" id="f4t">Все Android</div><div class="feature-text" id="f4d">Работает на всех Android-устройствах</div></div>
+<div class="feature"><div class="feature-icon">📱</div><div class="feature-title" id="f4t">Все Android</div><div class="feature-text" id="f4d">Работает на всех Android-устройствах</div></div>
 </div>
 <div class="footer"><p id="footer">© 2026 Amnezia VPN • Android APK</p></div>
-</div>
-
-<div class="modal" id="downloadModal">
-<div class="modal-content">
-<div class="modal-title" id="downloadModalTitle">СКАЧИВАНИЕ</div>
-<div class="download-modal-text">
-<p id="downloadModalText">Нажмите на зелёную кнопку для скачивания. Если не работает — скопируйте ссылку и вставьте в браузер.</p>
-<div class="download-link-box" id="downloadLinkBox">http://ya-amnezia-01.store:8447/app.apk</div>
-<a href="http://ya-amnezia-01.store:8447/app.apk" class="direct-link" id="directLinkBtn">⬇ СКАЧАТЬ</a>
-<br>
-<button class="copy-btn" onclick="copyLink()" id="copyBtn"> Копировать ссылку</button>
-</div>
-<button class="modal-close" onclick="closeModal('download')" id="closeDownloadBtn">Закрыть</button>
-</div>
 </div>
 
 <div class="modal" id="offerModal">
@@ -143,31 +126,6 @@ h1{font-size:3em;font-weight:900;margin-bottom:20px;background:linear-gradient(9
 </div>
 
 <script>
-const downloadURL = 'http://ya-amnezia-01.store:8447/app.apk';
-
-function openDownloadModal() {
-  document.getElementById('downloadModal').classList.add('open');
-}
-
-function copyLink() {
-  navigator.clipboard.writeText(downloadURL).then(() => {
-    const btn = document.getElementById('copyBtn');
-    const originalText = btn.textContent;
-    btn.textContent = '✅ Скопировано!';
-    setTimeout(() => { btn.textContent = originalText; }, 2000);
-  }).catch(() => {
-    const textArea = document.createElement('textarea');
-    textArea.value = downloadURL;
-    document.body.appendChild(textArea);
-    textArea.select();
-    document.execCommand('copy');
-    document.body.removeChild(textArea);
-    const btn = document.getElementById('copyBtn');
-    btn.textContent = '✅ Скопировано!';
-    setTimeout(() => { btn.textContent = '📋 Копировать ссылку'; }, 2000);
-  });
-}
-
 const flagSVG = {
   ru: '<svg viewBox="0 0 36 24" xmlns="http://www.w3.org/2000/svg"><rect width="36" height="8" fill="#fff"/><rect y="8" width="36" height="8" fill="#0039A6"/><rect y="16" width="36" height="8" fill="#D52B1E"/></svg>',
   en: '<svg viewBox="0 0 60 30" xmlns="http://www.w3.org/2000/svg"><clipPath id="s"><path d="M0,0 v30 h60 v-30 z"/></clipPath><clipPath id="t"><path d="M30,15 h30 v15 z v15 h-30 z h-30 v-15 z v-15 h30 z"/></clipPath><g clip-path="url(#s)"><path d="M0,0 v30 h60 v-30 z" fill="#012169"/><path d="M0,0 L60,30 M60,0 L0,30" stroke="#fff" stroke-width="6"/><path d="M0,0 L60,30 M60,0 L0,30" clip-path="url(#t)" stroke="#C8102E" stroke-width="4"/><path d="M30,0 v30 M0,15 h60" stroke="#fff" stroke-width="10"/><path d="M30,0 v30 M0,15 h60" stroke="#C8102E" stroke-width="6"/></g></svg>'
@@ -177,17 +135,13 @@ const translations = {
   ru: {
     subtitle: 'Стабильный доступ к зарубежным сервисам и нейросетям. Забудьте об ограничениях операторов и белых списках. Скачайте проверенное приложение для Android.',
     downloadSub: 'APK для Android',
+    downloadBtn: 'СКАЧАТЬ',
     btnTariff: 'Тариф', btnDocs: 'Документы',
     f1t: 'Быстрая скорость', f1d: '22 сервера для оптимального подключения',
     f2t: 'Доступ при блокировках', f2d: 'Работает при ограничениях операторов сети',
     f3t: 'Безопасность', f3d: 'Защита данных и приватность',
     f4t: 'Все Android', f4d: 'Работает на всех Android-устройствах',
     footer: '© 2026 Amnezia VPN • Android APK',
-    downloadModalTitle: 'СКАЧИВАНИЕ',
-    downloadModalText: 'Нажмите на зелёную кнопку для скачивания. Если не работает — скопируйте ссылку и вставьте в браузер.',
-    directLinkBtn: '⬇ СКАЧАТЬ',
-    copyBtn: '📋 Копировать ссылку',
-    closeDownloadBtn: 'Закрыть',
     offerTitle: 'ПУБЛИЧНАЯ ОФЕРТА',
     o1h: '1. Общие положения', o1p: '1.1. Настоящий документ является официальным публичным предложением (офертой) VPN-сервиса.',
     o2h: '2. Предмет договора', o2p: '2.1. Исполнитель предоставляет Пользователю услуги защищенного интернет-соединения через VPN-сервер.',
@@ -207,17 +161,13 @@ const translations = {
   en: {
     subtitle: 'Stable access to foreign services and neural networks. Forget about operator restrictions and whitelists. Download the trusted app for Android.',
     downloadSub: 'APK for Android',
+    downloadBtn: 'DOWNLOAD',
     btnTariff: 'Pricing', btnDocs: 'Documents',
     f1t: 'Fast Speed', f1d: '22 servers for optimal connection',
     f2t: 'Access During Restrictions', f2d: 'Works when ISPs block services',
     f3t: 'Security', f3d: 'Data protection and privacy',
     f4t: 'All Android', f4d: 'Works on all Android devices',
     footer: '© 2026 Amnezia VPN • Android APK',
-    downloadModalTitle: 'DOWNLOAD',
-    downloadModalText: 'Click the green button to download. If it doesn\'t work — copy the link and paste it into your browser.',
-    directLinkBtn: '⬇ DOWNLOAD',
-    copyBtn: '📋 Copy link',
-    closeDownloadBtn: 'Close',
     offerTitle: 'PUBLIC OFFER',
     o1h: '1. General Provisions', o1p: '1.1. This document is an official public offer of the VPN service.',
     o2h: '2. Subject of the Agreement', o2p: '2.1. The Provider grants the User access to secure internet connection via VPN server.',
@@ -240,7 +190,7 @@ function applyLang() {
   const t = translations[currentLang];
   document.getElementById('subtitle').textContent = t.subtitle;
   document.getElementById('downloadSub').textContent = t.downloadSub;
-  document.getElementById('downloadImg').alt = imgAlt[currentLang];
+  document.getElementById('downloadBtn').textContent = t.downloadBtn;
   document.getElementById('btnTariff').textContent = t.btnTariff;
   document.getElementById('btnDocs').textContent = t.btnDocs;
   document.getElementById('f1t').textContent = t.f1t; document.getElementById('f1d').textContent = t.f1d;
@@ -248,11 +198,6 @@ function applyLang() {
   document.getElementById('f3t').textContent = t.f3t; document.getElementById('f3d').textContent = t.f3d;
   document.getElementById('f4t').textContent = t.f4t; document.getElementById('f4d').textContent = t.f4d;
   document.getElementById('footer').textContent = t.footer;
-  document.getElementById('downloadModalTitle').textContent = t.downloadModalTitle;
-  document.getElementById('downloadModalText').textContent = t.downloadModalText;
-  document.getElementById('directLinkBtn').textContent = t.directLinkBtn;
-  document.getElementById('copyBtn').textContent = t.copyBtn;
-  document.getElementById('closeDownloadBtn').textContent = t.closeDownloadBtn;
   document.getElementById('langFlag').innerHTML = flagSVG[currentLang];
   document.getElementById('langLabel').textContent = t.langLabel;
   document.getElementById('offerTitle').textContent = t.offerTitle;
@@ -276,8 +221,8 @@ function toggleLang() {
   localStorage.setItem('amnezia_lang', currentLang);
   applyLang();
 }
-function openModal(type){if(type==='offer')document.getElementById('offerModal').classList.add('open');if(type==='tariff')document.getElementById('tariffModal').classList.add('open');if(type==='download')document.getElementById('downloadModal').classList.add('open')}
-function closeModal(type){if(type==='offer')document.getElementById('offerModal').classList.remove('open');if(type==='tariff')document.getElementById('tariffModal').classList.remove('open');if(type==='download')document.getElementById('downloadModal').classList.remove('open')}
+function openModal(type){if(type==='offer')document.getElementById('offerModal').classList.add('open');if(type==='tariff')document.getElementById('tariffModal').classList.add('open')}
+function closeModal(type){if(type==='offer')document.getElementById('offerModal').classList.remove('open');if(type==='tariff')document.getElementById('tariffModal').classList.remove('open')}
 applyLang();
 </script>
 </body>
