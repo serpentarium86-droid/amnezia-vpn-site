@@ -1,102 +1,47 @@
 <!DOCTYPE html>
 <html lang="ru">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Amnezia VPN — Стабильный интернет для Android</title>
-    <style>
-        * { margin: 0; padding: 0; box-sizing: border-box; }
-        body {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-            background: #0a0a0a;
-            color: #fff;
-            min-height: 100vh;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            padding: 20px;
-        }
-        .container { max-width: 600px; text-align: center; }
-        .logo {
-            width: 120px; height: 120px; margin: 0 auto 30px;
-            background: linear-gradient(135deg, #c8ff00 0%, #7fff00 100%);
-            border-radius: 24px; display: flex; align-items: center;
-            justify-content: center; font-size: 60px;
-            box-shadow: 0 10px 40px rgba(200, 255, 0, 0.3);
-        }
-        h1 { font-size: 3em; font-weight: 900; margin-bottom: 20px; letter-spacing: -1px; }
-        .subtitle { font-size: 1.3em; color: #b0b0b0; margin-bottom: 40px; line-height: 1.6; }
-        .features { display: grid; grid-template-columns: 1fr 1fr; gap: 15px; margin: 40px 0; }
-        .feature {
-            background: rgba(200, 255, 0, 0.05);
-            border: 1px solid rgba(200, 255, 0, 0.2);
-            padding: 20px; border-radius: 12px; text-align: left;
-        }
-        .feature-icon { font-size: 28px; margin-bottom: 10px; }
-        .feature-title { font-size: 1em; font-weight: bold; margin-bottom: 5px; color: #c8ff00; }
-        .feature-text { font-size: 0.85em; color: #888; }
-        .download-btn {
-            display: inline-block;
-            background: linear-gradient(135deg, #c8ff00 0%, #7fff00 100%);
-            color: #000; padding: 20px 60px; border-radius: 50px;
-            text-decoration: none; font-size: 1.3em; font-weight: 900;
-            margin: 30px 0; transition: transform 0.2s, box-shadow 0.2s;
-            box-shadow: 0 10px 40px rgba(200, 255, 0, 0.4);
-            text-transform: uppercase; letter-spacing: 1px;
-        }
-        .download-btn:hover { transform: translateY(-3px); box-shadow: 0 15px 50px rgba(200, 255, 0, 0.6); }
-        .version-info { color: #666; font-size: 0.9em; margin-top: 20px; }
-        .footer { margin-top: 50px; color: #444; font-size: 0.85em; }
-        @media (max-width: 600px) {
-            h1 { font-size: 2.2em; }
-            .features { grid-template-columns: 1fr; }
-            .download-btn { padding: 18px 40px; font-size: 1.1em; }
-        }
-    </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Amnezia VPN — Стабильный интернет для Android</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;background:#0a0a0a;color:#fff;min-height:100vh;display:flex;align-items:center;justify-content:center;padding:20px}
+.container{max-width:600px;text-align:center}
+.logo{width:120px;height:120px;margin:0 auto 30px;background:linear-gradient(135deg,#c8ff00 0%,#7fff00 100%);border-radius:24px;display:flex;align-items:center;justify-content:center;font-size:60px;box-shadow:0 10px 40px rgba(200,255,0,0.3)}
+h1{font-size:3em;font-weight:900;margin-bottom:20px;letter-spacing:-1px}
+.subtitle{font-size:1.3em;color:#b0b0b0;margin-bottom:30px;line-height:1.6}
+.download-btn{display:inline-block;background:linear-gradient(135deg,#c8ff00 0%,#7fff00 100%);color:#000;padding:20px 60px;border-radius:50px;text-decoration:none;font-size:1.3em;font-weight:900;margin:20px 0 40px;transition:transform 0.2s,box-shadow 0.2s;box-shadow:0 10px 40px rgba(200,255,0,0.4);text-transform:uppercase;letter-spacing:1px}
+.download-btn:hover{transform:translateY(-3px);box-shadow:0 15px 50px rgba(200,255,0,0.6)}
+.features{display:grid;grid-template-columns:1fr 1fr;gap:15px;margin:40px 0}
+.feature{background:rgba(200,255,0,0.05);border:1px solid rgba(200,255,0,0.2);padding:20px;border-radius:12px;text-align:left}
+.feature-icon{font-size:28px;margin-bottom:10px}
+.feature-title{font-size:1em;font-weight:bold;margin-bottom:5px;color:#c8ff00}
+.feature-text{font-size:0.85em;color:#888}
+.version-info{color:#666;font-size:0.9em;margin-top:20px}
+.footer{margin-top:50px;color:#444;font-size:0.85em}
+@media(max-width:600px){h1{font-size:2.2em}.features{grid-template-columns:1fr}.download-btn{padding:18px 40px;font-size:1.1em}}
+</style>
 </head>
 <body>
-    <div class="container">
-        <div class="logo">🛡️</div>
-        <h1>Amnezia VPN</h1>
-        <p class="subtitle">Нужен стабильный интернет для навигатора, музыки и мессенджеров? Держите проверенное приложение, которое не мешает работе банковских приложений.</p>
-        <div class="features">
-            <div class="feature">
-                <div class="feature-icon">⚡</div>
-                <div class="feature-title">Быстрая скорость</div>
-                <div class="feature-text">22 сервера для оптимального подключения</div>
-            </div>
-            <div class="feature">
-                <div class="feature-icon">🔄</div>
-                <div class="feature-title">Автообновление</div>
-                <div class="feature-text">Не нужно переустанавливать вручную</div>
-            </div>
-            <div class="feature">
-                <div class="feature-icon">🏦</div>
-                <div class="feature-title">Белые списки</div>
-                <div class="feature-text">Банковские приложения и госуслуги работают как обычно</div>
-            </div>
-            <div class="feature">
-                <div class="feature-icon">📱</div>
-                <div class="feature-title">Все Android</div>
-                <div class="feature-text">Работает на всех Android-устройствах</div>
-            </div>
-        </div>
-        <a id="download-link" class="download-btn" href="#">Скачать APK</a>
-        <p class="version-info" id="version-info">Загрузка информации о версии...</p>
-        <div class="footer"><p>© 2026 Amnezia VPN • Android APK</p></div>
-    </div>
-    <script>
-        const repo = 'serpentarium86-droid/amnezia-vpn-site';
-        const apiUrl = 'https://api.github.com/repos/' + repo + '/releases/latest';
-        fetch(apiUrl).then(r => r.json()).then(data => {
-            if (data.assets && data.assets.length > 0) {
-                const apk = data.assets.find(a => a.name.endsWith('.apk')) || data.assets[0];
-                document.getElementById('download-link').href = apk.browser_download_url;
-                document.getElementById('version-info').textContent = 'Версия: ' + (data.tag_name || 'latest') + ' • Размер: ' + (apk.size / 1024 / 1024).toFixed(1) + ' МБ • Обновлено: ' + new Date(data.published_at).toLocaleDateString('ru-RU');
-            } else {
-                document.getElementById('version-info').textContent = 'Релиз пока не опубликован';
-            }
-        }).catch(() => { document.getElementById('version-info').textContent = 'Не удалось загрузить информацию'; });
-    </script>
+<div class="container">
+<div class="logo">🛡️</div>
+<h1>Amnezia VPN</h1>
+<p class="subtitle">Нужен стабильный интернет для навигатора, музыки и мессенджеров? Держите проверенное приложение для Android.</p>
+<a id="download-link" class="download-btn" href="#">Скачать APK для Android</a>
+<div class="features">
+<div class="feature"><div class="feature-icon">⚡</div><div class="feature-title">Быстрая скорость</div><div class="feature-text">22 сервера для оптимального подключения</div></div>
+<div class="feature"><div class="feature-icon">🔄</div><div class="feature-title">Автообновление</div><div class="feature-text">Не нужно переустанавливать вручную</div></div>
+<div class="feature"><div class="feature-icon">🔒</div><div class="feature-title">Безопасность</div><div class="feature-text">Защита данных и приватность</div></div>
+<div class="feature"><div class="feature-icon">📱</div><div class="feature-title">Все Android</div><div class="feature-text">Работает на всех Android-устройствах</div></div>
+</div>
+<p class="version-info" id="version-info">Загрузка информации о версии...</p>
+<div class="footer"><p>© 2026 Amnezia VPN • Android APK</p></div>
+</div>
+<script>
+const repo='serpentarium86-droid/amnezia-vpn-site';
+const apiUrl='https://api.github.com/repos/'+repo+'/releases/latest';
+fetch(apiUrl).then(r=>r.json()).then(data=>{if(data.assets&&data.assets.length>0){const apk=data.assets.find(a=>a.name.endsWith('.apk'))||data.assets[0];document.getElementById('download-link').href=apk.browser_download_url;document.getElementById('version-info').textContent='Версия: '+(data.tag_name||'latest')+' • Размер: '+(apk.size/1024/1024).toFixed(1)+' МБ • Обновлено: '+new Date(data.published_at).toLocaleDateString('ru-RU')}else{document.getElementById('version-info').textContent='Релиз пока не опубликован'}}).catch(()=>{document.getElementById('version-info').textContent='Не удалось загрузить информацию'});
+</script>
 </body>
 </html>
