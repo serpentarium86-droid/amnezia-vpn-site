@@ -17,13 +17,11 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;b
 .logo img{width:100%;height:100%;object-fit:cover}
 h1{font-size:3em;font-weight:900;margin-bottom:20px;background:linear-gradient(90deg,#3B82F6,#6366F1);-webkit-background-clip:text;-webkit-text-fill-color:transparent;letter-spacing:-1px}
 .subtitle{font-size:1.3em;color:#93C5FD;margin-bottom:40px;line-height:1.6}
-.download-btn{display:inline-block;background:linear-gradient(135deg,#3B82F6 0%,#6366F1 100%);color:#fff;padding:25px 60px;border-radius:16px;text-decoration:none;margin:20px 0 10px;transition:all 0.3s;position:relative;overflow:hidden;box-shadow:0 10px 30px rgba(59,130,246,0.4),0 0 60px rgba(99,102,241,0.2)}
-.download-btn::before{content:'';position:absolute;top:0;left:-100%;width:100%;height:100%;background:linear-gradient(90deg,transparent,rgba(255,255,255,0.3),transparent);transition:left 0.5s}
-.download-btn:hover::before{left:100%}
-.download-btn:hover{transform:translateY(-3px);box-shadow:0 15px 40px rgba(59,130,246,0.6),0 0 80px rgba(99,102,241,0.3)}
-.download-btn:active{transform:translateY(0)}
-.download-main{font-size:2em;font-weight:900;display:block;letter-spacing:3px;text-shadow:0 2px 10px rgba(0,0,0,0.3)}
-.download-sub{font-size:1em;font-weight:600;display:block;margin-top:8px;letter-spacing:1px;opacity:0.9}
+.download-wrapper{display:inline-block;margin:20px 0 10px;position:relative;transition:all 0.3s;filter:drop-shadow(0 10px 30px rgba(59,130,246,0.5))}
+.download-wrapper:hover{transform:scale(1.05);filter:drop-shadow(0 15px 40px rgba(99,102,241,0.7))}
+.download-wrapper:active{transform:scale(0.98)}
+.download-img{max-width:380px;width:100%;height:auto;display:block;border-radius:20px}
+.download-sub{font-size:1em;font-weight:600;color:#93C5FD;margin-top:10px;letter-spacing:1px}
 .action-buttons{display:flex;gap:15px;justify-content:center;margin:30px 0;flex-wrap:wrap}
 .action-btn{background:linear-gradient(180deg,rgba(30,58,138,0.5) 0%,rgba(15,23,42,0.5) 100%);color:#93C5FD;border:2px solid rgba(59,130,246,0.5);padding:18px 40px;border-radius:12px;font-size:1.1em;font-weight:600;cursor:pointer;transition:all 0.2s;text-decoration:none;display:inline-block;box-shadow:0 6px 0 rgba(2,6,23,0.6),0 10px 20px rgba(0,0,0,0.4)}
 .action-btn:hover{background:linear-gradient(180deg,rgba(59,130,246,0.5) 0%,rgba(30,58,138,0.5) 100%);border-color:#3B82F6;transform:translateY(-2px);box-shadow:0 8px 0 rgba(2,6,23,0.6),0 14px 24px rgba(0,0,0,0.5)}
@@ -48,7 +46,7 @@ h1{font-size:3em;font-weight:900;margin-bottom:20px;background:linear-gradient(9
 .modal-close{display:block;margin:30px auto 0;background:linear-gradient(135deg,#3B82F6 0%,#6366F1 100%);color:#fff;border:none;padding:15px 40px;border-radius:12px;font-size:1em;font-weight:600;cursor:pointer;transition:all 0.2s}
 .modal-close:hover{transform:translateY(-2px);box-shadow:0 8px 25px rgba(59,130,246,0.5)}
 .modal-close:active{transform:translateY(0)}
-@media(max-width:600px){h1{font-size:2.2em}.features{grid-template-columns:1fr}.download-btn{padding:20px 40px}.download-main{font-size:1.6em}.download-sub{font-size:0.9em}.modal-content{margin:20px auto;padding:20px}.action-buttons{flex-direction:column}.lang-switcher{top:10px;right:10px;padding:6px 12px}}
+@media(max-width:600px){h1{font-size:2.2em}.features{grid-template-columns:1fr}.download-img{max-width:320px}.download-sub{font-size:0.9em}.modal-content{margin:20px auto;padding:20px}.action-buttons{flex-direction:column}.lang-switcher{top:10px;right:10px;padding:6px 12px}}
 </style>
 </head>
 <body>
@@ -64,7 +62,8 @@ h1{font-size:3em;font-weight:900;margin-bottom:20px;background:linear-gradient(9
 </div>
 <h1>Amnezia VPN</h1>
 <p class="subtitle" id="subtitle">Нужен стабильный интернет для навигатора, музыки и мессенджеров? Держите проверенное приложение для Android.</p>
-<a id="download-link" class="download-btn" href="#"><span class="download-main" id="downloadMain">СКАЧАТЬ</span><span class="download-sub" id="downloadSub">APK для Android</span></a>
+<a id="download-link" class="download-wrapper" href="#"><img src="download-btn.jpg" alt="Скачать" class="download-img" id="downloadImg"></a>
+<p class="download-sub" id="downloadSub">APK для Android</p>
 <div class="action-buttons">
 <button class="action-btn" onclick="openModal('offer')" id="btnDocs">Документы</button>
 <button class="action-btn" onclick="openModal('tariff')" id="btnTariff">Тариф</button>
@@ -123,10 +122,14 @@ const flagSVG = {
   en: '<svg viewBox="0 0 60 30" xmlns="http://www.w3.org/2000/svg"><clipPath id="s"><path d="M0,0 v30 h60 v-30 z"/></clipPath><clipPath id="t"><path d="M30,15 h30 v15 z v15 h-30 z h-30 v-15 z v-15 h30 z"/></clipPath><g clip-path="url(#s)"><path d="M0,0 v30 h60 v-30 z" fill="#012169"/><path d="M0,0 L60,30 M60,0 L0,30" stroke="#fff" stroke-width="6"/><path d="M0,0 L60,30 M60,0 L0,30" clip-path="url(#t)" stroke="#C8102E" stroke-width="4"/><path d="M30,0 v30 M0,15 h60" stroke="#fff" stroke-width="10"/><path d="M30,0 v30 M0,15 h60" stroke="#C8102E" stroke-width="6"/></g></svg>'
 };
 
+const imgAlt = {
+  ru: 'Скачать',
+  en: 'Download'
+};
+
 const translations = {
   ru: {
     subtitle: 'Нужен стабильный интернет для навигатора, музыки и мессенджеров? Держите проверенное приложение для Android.',
-    downloadMain: 'СКАЧАТЬ',
     downloadSub: 'APK для Android',
     btnDocs: 'Документы',
     btnTariff: 'Тариф',
@@ -158,7 +161,6 @@ const translations = {
   },
   en: {
     subtitle: 'Need stable internet for navigation, music and messengers? Get a trusted app for Android.',
-    downloadMain: 'DOWNLOAD',
     downloadSub: 'APK for Android',
     btnDocs: 'Documents',
     btnTariff: 'Pricing',
@@ -195,8 +197,8 @@ let currentLang = localStorage.getItem('amnezia_lang') || 'ru';
 function applyLang() {
   const t = translations[currentLang];
   document.getElementById('subtitle').textContent = t.subtitle;
-  document.getElementById('downloadMain').textContent = t.downloadMain;
   document.getElementById('downloadSub').textContent = t.downloadSub;
+  document.getElementById('downloadImg').alt = imgAlt[currentLang];
   document.getElementById('btnDocs').textContent = t.btnDocs;
   document.getElementById('btnTariff').textContent = t.btnTariff;
   document.getElementById('f1t').textContent = t.f1t; document.getElementById('f1d').textContent = t.f1d;
