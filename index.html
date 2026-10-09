@@ -17,10 +17,10 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;b
 .logo img{width:100%;height:100%;object-fit:cover}
 h1{font-size:3em;font-weight:900;margin-bottom:20px;background:linear-gradient(90deg,#3B82F6,#6366F1);-webkit-background-clip:text;-webkit-text-fill-color:transparent;letter-spacing:-1px}
 .subtitle{font-size:1.3em;color:#93C5FD;margin-bottom:40px;line-height:1.6}
-.download-wrapper{display:inline-block;margin:20px 0 10px;transition:all 0.3s;filter:drop-shadow(0 10px 30px rgba(59,130,246,0.5))}
-.download-wrapper:hover{transform:scale(1.05);filter:drop-shadow(0 15px 40px rgba(99,102,241,0.7))}
+.download-wrapper{display:inline-block;margin:20px auto 10px;transition:all 0.3s;filter:drop-shadow(0 8px 25px rgba(59,130,246,0.4));border-radius:28px;overflow:hidden;max-width:320px;width:100%}
+.download-wrapper:hover{transform:scale(1.03);filter:drop-shadow(0 12px 35px rgba(99,102,241,0.6))}
 .download-wrapper:active{transform:scale(0.98)}
-.download-img{max-width:380px;width:100%;height:auto;display:block}
+.download-img{width:100%;height:auto;display:block;border-radius:28px}
 .download-sub{font-size:1em;font-weight:600;color:#93C5FD;margin-top:10px;letter-spacing:1px}
 .action-buttons{display:flex;gap:15px;justify-content:center;margin:30px 0;flex-wrap:wrap}
 .action-btn{background:linear-gradient(180deg,rgba(30,58,138,0.5) 0%,rgba(15,23,42,0.5) 100%);color:#93C5FD;border:2px solid rgba(59,130,246,0.5);padding:18px 40px;border-radius:12px;font-size:1.1em;font-weight:600;cursor:pointer;transition:all 0.2s;text-decoration:none;display:inline-block;box-shadow:0 6px 0 rgba(2,6,23,0.6),0 10px 20px rgba(0,0,0,0.4)}
@@ -46,7 +46,7 @@ h1{font-size:3em;font-weight:900;margin-bottom:20px;background:linear-gradient(9
 .modal-close{display:block;margin:30px auto 0;background:linear-gradient(135deg,#3B82F6 0%,#6366F1 100%);color:#fff;border:none;padding:15px 40px;border-radius:12px;font-size:1em;font-weight:600;cursor:pointer;transition:all 0.2s}
 .modal-close:hover{transform:translateY(-2px);box-shadow:0 8px 25px rgba(59,130,246,0.5)}
 .modal-close:active{transform:translateY(0)}
-@media(max-width:600px){h1{font-size:2.2em}.features{grid-template-columns:1fr}.download-img{max-width:320px}.download-sub{font-size:0.9em}.modal-content{margin:20px auto;padding:20px}.action-buttons{flex-direction:column}.lang-switcher{top:10px;right:10px;padding:6px 12px}}
+@media(max-width:600px){h1{font-size:2.2em}.features{grid-template-columns:1fr}.download-wrapper{max-width:280px}.download-sub{font-size:0.9em}.modal-content{margin:20px auto;padding:20px}.action-buttons{flex-direction:column}.lang-switcher{top:10px;right:10px;padding:6px 12px}}
 </style>
 </head>
 <body>
@@ -121,9 +121,7 @@ const flagSVG = {
   ru: '<svg viewBox="0 0 36 24" xmlns="http://www.w3.org/2000/svg"><rect width="36" height="8" fill="#fff"/><rect y="8" width="36" height="8" fill="#0039A6"/><rect y="16" width="36" height="8" fill="#D52B1E"/></svg>',
   en: '<svg viewBox="0 0 60 30" xmlns="http://www.w3.org/2000/svg"><clipPath id="s"><path d="M0,0 v30 h60 v-30 z"/></clipPath><clipPath id="t"><path d="M30,15 h30 v15 z v15 h-30 z h-30 v-15 z v-15 h30 z"/></clipPath><g clip-path="url(#s)"><path d="M0,0 v30 h60 v-30 z" fill="#012169"/><path d="M0,0 L60,30 M60,0 L0,30" stroke="#fff" stroke-width="6"/><path d="M0,0 L60,30 M60,0 L0,30" clip-path="url(#t)" stroke="#C8102E" stroke-width="4"/><path d="M30,0 v30 M0,15 h60" stroke="#fff" stroke-width="10"/><path d="M30,0 v30 M0,15 h60" stroke="#C8102E" stroke-width="6"/></g></svg>'
 };
-
 const imgAlt = { ru: 'Скачать', en: 'Download' };
-
 const translations = {
   ru: {
     subtitle: 'Нужен стабильный интернет для навигатора, музыки и мессенджеров? Держите проверенное приложение для Android.',
@@ -184,9 +182,7 @@ const translations = {
     closeBtn: 'Close', langLabel: 'EN'
   }
 };
-
 let currentLang = localStorage.getItem('amnezia_lang') || 'ru';
-
 function applyLang() {
   const t = translations[currentLang];
   document.getElementById('subtitle').textContent = t.subtitle;
@@ -218,13 +214,11 @@ function applyLang() {
   document.documentElement.lang = currentLang;
   updateVersionText();
 }
-
 function toggleLang() {
   currentLang = currentLang === 'ru' ? 'en' : 'ru';
   localStorage.setItem('amnezia_lang', currentLang);
   applyLang();
 }
-
 function updateVersionText() {
   const t = translations[currentLang];
   const el = document.getElementById('version-info');
@@ -235,10 +229,8 @@ function updateVersionText() {
     el.textContent = t.versionFormat.replace('{v}', d.tag_name || 'latest').replace('{s}', d.size).replace('{d}', d.date);
   } catch(e) { el.textContent = t.versionLoading; }
 }
-
 function openModal(type){if(type==='offer')document.getElementById('offerModal').classList.add('open');if(type==='tariff')document.getElementById('tariffModal').classList.add('open')}
 function closeModal(type){if(type==='offer')document.getElementById('offerModal').classList.remove('open');if(type==='tariff')document.getElementById('tariffModal').classList.remove('open')}
-
 const repo='serpentarium86-droid/amnezia-vpn-site';
 const apiUrl='https://api.github.com/repos/'+repo+'/releases/latest';
 fetch(apiUrl).then(r=>r.json()).then(data=>{
@@ -256,7 +248,6 @@ fetch(apiUrl).then(r=>r.json()).then(data=>{
 }).catch(()=>{
   document.getElementById('version-info').textContent=translations[currentLang].loadError;
 });
-
 applyLang();
 </script>
 </body>
