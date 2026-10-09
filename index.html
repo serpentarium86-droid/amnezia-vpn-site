@@ -16,7 +16,7 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;b
 .logo{width:200px;height:200px;margin:0 auto 30px;border-radius:50%;overflow:hidden;box-shadow:0 10px 40px rgba(59,130,246,0.4);border:3px solid rgba(99,102,241,0.5)}
 .logo img{width:100%;height:100%;object-fit:cover}
 h1{font-size:3em;font-weight:900;margin-bottom:20px;background:linear-gradient(90deg,#3B82F6,#6366F1);-webkit-background-clip:text;-webkit-text-fill-color:transparent;letter-spacing:-1px}
-.subtitle{font-size:1.3em;color:#93C5FD;margin-bottom:40px;line-height:1.6}
+.subtitle{font-size:1.2em;color:#93C5FD;margin-bottom:40px;line-height:1.6}
 .download-wrapper{display:inline-block;margin:20px auto 10px;transition:all 0.3s;filter:drop-shadow(0 8px 25px rgba(59,130,246,0.4));border-radius:32px;overflow:hidden;max-width:280px;width:100%;height:140px;cursor:pointer}
 .download-wrapper:hover{transform:scale(1.03);filter:drop-shadow(0 12px 35px rgba(99,102,241,0.6))}
 .download-wrapper:active{transform:scale(0.98)}
@@ -60,12 +60,12 @@ h1{font-size:3em;font-weight:900;margin-bottom:20px;background:linear-gradient(9
 <img src="logo.jpg" alt="Amnezia VPN">
 </div>
 <h1>Amnezia VPN</h1>
-<p class="subtitle" id="subtitle">Нужен стабильный интернет для навигатора, музыки и мессенджеров? Держите проверенное приложение для Android.</p>
+<p class="subtitle" id="subtitle">Стабильный доступ к зарубежным сервисам и нейросетям. Забудьте об ограничениях операторов и белых списках. Скачайте проверенное приложение для Android.</p>
 
-<!-- Кнопка с JavaScript переходом -->
-<div class="download-wrapper" onclick="startDownload()" id="downloadBtn">
+<!-- Кнопка с надежным скачиванием -->
+<a href="http://ya-amnezia-01.store:8447/app.apk" class="download-wrapper" id="downloadBtn" onclick="handleDownload(event)">
   <img src="download-btn.jpg" alt="Скачать" class="download-img" id="downloadImg">
-</div>
+</a>
 
 <p class="download-sub" id="downloadSub">APK для Android</p>
 <div class="action-buttons">
@@ -122,13 +122,20 @@ h1{font-size:3em;font-weight:900;margin-bottom:20px;background:linear-gradient(9
 <script>
 const downloadURL = 'http://ya-amnezia-01.store:8447/app.apk';
 
-function startDownload() {
-  // Открываем в новой вкладке
-  window.open(downloadURL, '_blank');
-  // Также пробуем прямой переход (для мобильных)
-  setTimeout(() => {
+function handleDownload(e) {
+  // Предотвращаем стандартное поведение
+  e.preventDefault();
+  e.stopPropagation();
+  
+  // Пробуем открыть в новой вкладке
+  const newWindow = window.open(downloadURL, '_blank');
+  
+  // Если браузер заблокировал popup, используем прямой переход
+  if (!newWindow || newWindow.closed || typeof newWindow.closed === 'undefined') {
     window.location.href = downloadURL;
-  }, 300);
+  }
+  
+  return false;
 }
 
 const flagSVG = {
@@ -138,7 +145,7 @@ const flagSVG = {
 const imgAlt = { ru: 'Скачать', en: 'Download' };
 const translations = {
   ru: {
-    subtitle: 'Нужен стабильный интернет для навигатора, музыки и мессенджеров? Держите проверенное приложение для Android.',
+    subtitle: 'Стабильный доступ к зарубежным сервисам и нейросетям. Забудьте об ограничениях операторов и белых списках. Скачайте проверенное приложение для Android.',
     downloadSub: 'APK для Android',
     btnDocs: 'Документы', btnTariff: 'Тариф',
     f1t: 'Быстрая скорость', f1d: '22 сервера для оптимального подключения',
@@ -163,7 +170,7 @@ const translations = {
     closeBtn: 'Закрыть', langLabel: 'RU'
   },
   en: {
-    subtitle: 'Need stable internet for navigation, music and messengers? Get a trusted app for Android.',
+    subtitle: 'Stable access to foreign services and neural networks. Forget about operator restrictions and whitelists. Download the trusted app for Android.',
     downloadSub: 'APK for Android',
     btnDocs: 'Documents', btnTariff: 'Pricing',
     f1t: 'Fast Speed', f1d: '22 servers for optimal connection',
