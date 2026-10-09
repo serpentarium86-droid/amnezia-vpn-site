@@ -6,152 +6,78 @@
 <title>Amnezia VPN — Стабильный интернет для Android</title>
 <style>
 *{margin:0;padding:0;box-sizing:border-box}
-body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;background:#0a0a0a;color:#fff;min-height:100vh;display:flex;align-items:center;justify-content:center;padding:20px}
+body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;background:linear-gradient(135deg,#0a0e27 0%,#1a1f3a 50%,#0f1429 100%);color:#fff;min-height:100vh;display:flex;align-items:center;justify-content:center;padding:20px}
 .container{max-width:600px;text-align:center}
-.logo{width:120px;height:120px;margin:0 auto 30px;background:linear-gradient(135deg,#c8ff00 0%,#7fff00 100%);border-radius:24px;display:flex;align-items:center;justify-content:center;box-shadow:0 10px 40px rgba(200,255,0,0.3)}
-.logo svg{width:75px;height:75px;filter:drop-shadow(0 4px 8px rgba(0,0,0,0.5))}
-h1{font-size:3em;font-weight:900;margin-bottom:20px;letter-spacing:-1px}
-.subtitle{font-size:1.3em;color:#b0b0b0;margin-bottom:30px;line-height:1.6}
-.download-btn{display:inline-block;background:linear-gradient(180deg,#d4ff33 0%,#a8e600 50%,#7fff00 100%);color:#000;padding:20px 60px;border-radius:50px;text-decoration:none;font-size:1.3em;font-weight:900;margin:20px 0 40px;text-transform:uppercase;letter-spacing:1px;border:2px solid #e8ff66;box-shadow:0 8px 0 #5a9e00,0 12px 20px rgba(0,0,0,0.5),inset 0 2px 4px rgba(255,255,255,0.5);transition:all 0.15s;text-shadow:0 1px 0 rgba(255,255,255,0.3)}
-.download-btn:hover{transform:translateY(-2px);box-shadow:0 10px 0 #5a9e00,0 16px 24px rgba(0,0,0,0.6),inset 0 2px 4px rgba(255,255,255,0.5)}
-.download-btn:active{transform:translateY(6px);box-shadow:0 2px 0 #5a9e00,0 4px 8px rgba(0,0,0,0.5),inset 0 2px 4px rgba(0,0,0,0.2)}
+.logo{width:140px;height:140px;margin:0 auto 30px;border-radius:50%;overflow:hidden;box-shadow:0 10px 40px rgba(0,150,255,0.3);border:3px solid rgba(0,212,255,0.3)}
+.logo svg{width:100%;height:100%}
+h1{font-size:3em;font-weight:900;margin-bottom:20px;background:linear-gradient(90deg,#00d4ff,#4a90e2);-webkit-background-clip:text;-webkit-text-fill-color:transparent;letter-spacing:-1px}
+.subtitle{font-size:1.3em;color:#b8c5d6;margin-bottom:40px;line-height:1.6}
+.action-buttons{display:flex;gap:15px;justify-content:center;margin:30px 0;flex-wrap:wrap}
+.action-btn{background:linear-gradient(135deg,#1e3a5f 0%,#2a4a7f 100%);color:#fff;border:2px solid #000;padding:18px 40px;border-radius:12px;font-size:1.1em;font-weight:600;cursor:pointer;transition:all 0.2s;text-decoration:none;display:inline-block}
+.action-btn:hover{background:linear-gradient(135deg,#2a4a7f 0%,#3a5a9f 100%);transform:translateY(-2px);box-shadow:0 8px 20px rgba(0,100,200,0.3)}
+.action-btn:active{transform:translateY(0)}
+.download-btn{display:inline-block;background:linear-gradient(135deg,#00d4ff 0%,#4a90e2 100%);color:#fff;padding:20px 60px;border-radius:12px;text-decoration:none;font-size:1.3em;font-weight:900;margin:30px 0;border:2px solid #000;transition:all 0.2s;text-transform:uppercase;letter-spacing:1px}
+.download-btn:hover{transform:translateY(-2px);box-shadow:0 8px 20px rgba(0,150,255,0.4)}
+.download-btn:active{transform:translateY(0)}
 .features{display:grid;grid-template-columns:1fr 1fr;gap:15px;margin:40px 0}
-.feature{background:linear-gradient(180deg,rgba(200,255,0,0.08) 0%,rgba(200,255,0,0.02) 100%);border:2px solid rgba(200,255,0,0.3);padding:20px;border-radius:12px;text-align:left;box-shadow:0 6px 0 rgba(0,0,0,0.4),0 10px 20px rgba(0,0,0,0.3),inset 0 1px 0 rgba(255,255,255,0.1);transition:all 0.2s}
-.feature:hover{transform:translateY(-2px);box-shadow:0 8px 0 rgba(0,0,0,0.4),0 14px 24px rgba(0,0,0,0.4),inset 0 1px 0 rgba(255,255,255,0.1)}
+.feature{background:rgba(0,100,200,0.08);border:2px solid rgba(0,212,255,0.2);padding:20px;border-radius:12px;text-align:left}
 .feature-icon{font-size:28px;margin-bottom:10px}
-.feature-title{font-size:1em;font-weight:bold;margin-bottom:5px;color:#c8ff00}
-.feature-text{font-size:0.85em;color:#888}
-.help-section{margin:50px 0 30px}
-.help-btn{background:linear-gradient(180deg,#d4ff33 0%,#a8e600 100%);border:2px solid #e8ff66;color:#000;padding:18px 50px;border-radius:50px;font-size:1.1em;font-weight:900;cursor:pointer;text-transform:uppercase;letter-spacing:1px;box-shadow:0 6px 0 #5a9e00,0 10px 20px rgba(0,0,0,0.4),inset 0 2px 4px rgba(255,255,255,0.4);transition:all 0.15s}
-.help-btn:hover{transform:translateY(-2px);box-shadow:0 8px 0 #5a9e00,0 14px 24px rgba(0,0,0,0.5),inset 0 2px 4px rgba(255,255,255,0.4)}
-.help-btn:active{transform:translateY(4px);box-shadow:0 2px 0 #5a9e00,0 4px 8px rgba(0,0,0,0.4),inset 0 2px 4px rgba(0,0,0,0.2)}
-.help-menu{max-height:0;overflow:hidden;transition:max-height 0.4s ease;margin-top:20px}
-.help-menu.open{max-height:700px}
-.help-item{display:flex;align-items:center;justify-content:center;gap:15px;background:linear-gradient(180deg,#1f1f1f 0%,#151515 100%);border:2px solid rgba(200,255,0,0.25);padding:20px;border-radius:12px;margin-bottom:12px;text-decoration:none;color:#fff;font-size:1.1em;font-weight:600;cursor:pointer;box-shadow:0 6px 0 #000,0 10px 20px rgba(0,0,0,0.5),inset 0 1px 0 rgba(255,255,255,0.1);transition:all 0.15s}
-.help-item:hover{border-color:#c8ff00;transform:translateY(-2px);box-shadow:0 8px 0 #000,0 14px 24px rgba(0,0,0,0.6),inset 0 1px 0 rgba(255,255,255,0.15)}
-.help-item:active{transform:translateY(4px);box-shadow:0 2px 0 #000,0 4px 8px rgba(0,0,0,0.4),inset 0 1px 0 rgba(0,0,0,0.2)}
-.help-item-icon{font-size:24px}
-.submenu{max-height:0;overflow:hidden;transition:max-height 0.4s ease}
-.submenu.open{max-height:500px}
-.tariff-box{background:linear-gradient(180deg,rgba(200,255,0,0.1) 0%,rgba(200,255,0,0.03) 100%);border:2px solid rgba(200,255,0,0.4);border-radius:12px;padding:25px;margin:10px 0;text-align:left;box-shadow:0 6px 0 rgba(0,0,0,0.4),0 10px 20px rgba(0,0,0,0.3),inset 0 1px 0 rgba(255,255,255,0.1)}
-.tariff-title{color:#c8ff00;font-weight:900;font-size:1.3em;margin-bottom:15px}
-.tariff-text{color:#ddd;line-height:1.8;font-size:1.05em}
-.tariff-text b{color:#c8ff00;font-size:1.1em}
-.version-info{color:#666;font-size:0.9em;margin-top:20px}
-.footer{margin-top:30px;color:#444;font-size:0.85em}
-.modal{display:none;position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,0.92);z-index:1000;overflow-y:auto;padding:20px}
+.feature-title{font-size:1em;font-weight:bold;margin-bottom:5px;color:#00d4ff}
+.feature-text{font-size:0.85em;color:#8899aa}
+.version-info{color:#667788;font-size:0.9em;margin-top:30px}
+.footer{margin-top:30px;color:#445566;font-size:0.85em}
+.modal{display:none;position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,0.9);z-index:1000;overflow-y:auto;padding:20px}
 .modal.open{display:block}
-.modal-content{max-width:600px;margin:40px auto;background:linear-gradient(180deg,#1e1e1e 0%,#151515 100%);border:2px solid rgba(200,255,0,0.4);border-radius:16px;padding:30px;text-align:left;box-shadow:0 10px 0 #000,0 20px 40px rgba(0,0,0,0.7),inset 0 1px 0 rgba(255,255,255,0.1)}
-.modal-title{color:#c8ff00;font-size:1.5em;font-weight:900;margin-bottom:20px;text-align:center;text-shadow:0 2px 4px rgba(0,0,0,0.5)}
+.modal-content{max-width:600px;margin:40px auto;background:linear-gradient(135deg,#1a1f3a 0%,#0f1429 100%);border:2px solid #000;border-radius:16px;padding:30px;text-align:left}
+.modal-title{color:#00d4ff;font-size:1.5em;font-weight:900;margin-bottom:20px;text-align:center}
 .modal-text{color:#ddd;line-height:1.8;font-size:1em}
-.modal-text h3{color:#c8ff00;margin:20px 0 10px;font-size:1.1em}
+.modal-text h3{color:#00d4ff;margin:20px 0 10px;font-size:1.1em}
 .modal-text p{margin-bottom:12px}
 .modal-text ul{margin:10px 0 15px 20px}
 .modal-text li{margin-bottom:8px}
-.modal-close{display:block;margin:30px auto 0;background:linear-gradient(180deg,#d4ff33 0%,#a8e600 100%);color:#000;border:2px solid #e8ff66;padding:15px 40px;border-radius:50px;font-size:1em;font-weight:900;cursor:pointer;box-shadow:0 6px 0 #5a9e00,0 10px 20px rgba(0,0,0,0.5),inset 0 2px 4px rgba(255,255,255,0.4);transition:all 0.15s;text-transform:uppercase}
-.modal-close:hover{transform:translateY(-2px);box-shadow:0 8px 0 #5a9e00,0 14px 24px rgba(0,0,0,0.6),inset 0 2px 4px rgba(255,255,255,0.4)}
-.modal-close:active{transform:translateY(4px);box-shadow:0 2px 0 #5a9e00,0 4px 8px rgba(0,0,0,0.4),inset 0 2px 4px rgba(0,0,0,0.2)}
-@media(max-width:600px){h1{font-size:2.2em}.features{grid-template-columns:1fr}.download-btn{padding:18px 40px;font-size:1.1em}.modal-content{margin:20px auto;padding:20px}}
+.modal-close{display:block;margin:30px auto 0;background:linear-gradient(135deg,#00d4ff 0%,#4a90e2 100%);color:#fff;border:2px solid #000;padding:15px 40px;border-radius:12px;font-size:1em;font-weight:600;cursor:pointer;transition:all 0.2s}
+.modal-close:hover{transform:translateY(-2px);box-shadow:0 8px 20px rgba(0,150,255,0.4)}
+.modal-close:active{transform:translateY(0)}
+@media(max-width:600px){h1{font-size:2.2em}.features{grid-template-columns:1fr}.download-btn{padding:18px 40px;font-size:1.1em}.modal-content{margin:20px auto;padding:20px}.action-buttons{flex-direction:column}}
 </style>
 </head>
 <body>
 <div class="container">
 <div class="logo">
-<svg viewBox="0 0 100 120" xmlns="http://www.w3.org/2000/svg">
+<svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
 <defs>
-<linearGradient id="shieldBody" x1="0%" y1="0%" x2="100%" y2="100%">
-<stop offset="0%" stop-color="#e8f4ff"/>
-<stop offset="50%" stop-color="#a8d4f0"/>
-<stop offset="100%" stop-color="#5a8fa8"/>
-</linearGradient>
-<linearGradient id="shieldHighlight" x1="0%" y1="0%" x2="100%" y2="0%">
-<stop offset="0%" stop-color="#ffffff" stop-opacity="0.6"/>
-<stop offset="100%" stop-color="#ffffff" stop-opacity="0"/>
+<radialGradient id="sphereGrad" cx="50%" cy="50%" r="50%">
+<stop offset="0%" stop-color="#4a90e2" stop-opacity="0.3"/>
+<stop offset="70%" stop-color="#0066cc" stop-opacity="0.6"/>
+<stop offset="100%" stop-color="#003366" stop-opacity="0.9"/>
+</radialGradient>
+<linearGradient id="flowGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+<stop offset="0%" stop-color="#00d4ff" stop-opacity="0.8"/>
+<stop offset="100%" stop-color="#4a90e2" stop-opacity="0.4"/>
 </linearGradient>
 </defs>
-<circle cx="18" cy="20" r="3" fill="#c0c0c0" stroke="#555" stroke-width="0.5"/>
-<circle cx="32" cy="12" r="3" fill="#c0c0c0" stroke="#555" stroke-width="0.5"/>
-<circle cx="50" cy="8" r="3" fill="#c0c0c0" stroke="#555" stroke-width="0.5"/>
-<circle cx="68" cy="12" r="3" fill="#c0c0c0" stroke="#555" stroke-width="0.5"/>
-<circle cx="82" cy="20" r="3" fill="#c0c0c0" stroke="#555" stroke-width="0.5"/>
-<circle cx="88" cy="38" r="3" fill="#c0c0c0" stroke="#555" stroke-width="0.5"/>
-<circle cx="90" cy="58" r="3" fill="#c0c0c0" stroke="#555" stroke-width="0.5"/>
-<circle cx="88" cy="78" r="3" fill="#c0c0c0" stroke="#555" stroke-width="0.5"/>
-<circle cx="82" cy="95" r="3" fill="#c0c0c0" stroke="#555" stroke-width="0.5"/>
-<circle cx="72" cy="108" r="3" fill="#c0c0c0" stroke="#555" stroke-width="0.5"/>
-<circle cx="50" cy="115" r="3" fill="#c0c0c0" stroke="#555" stroke-width="0.5"/>
-<circle cx="28" cy="108" r="3" fill="#c0c0c0" stroke="#555" stroke-width="0.5"/>
-<circle cx="18" cy="95" r="3" fill="#c0c0c0" stroke="#555" stroke-width="0.5"/>
-<circle cx="12" cy="78" r="3" fill="#c0c0c0" stroke="#555" stroke-width="0.5"/>
-<circle cx="10" cy="58" r="3" fill="#c0c0c0" stroke="#555" stroke-width="0.5"/>
-<circle cx="12" cy="38" r="3" fill="#c0c0c0" stroke="#555" stroke-width="0.5"/>
-<path d="M50 10 L15 25 L15 55 C15 80 30 100 50 112 C70 100 85 80 85 55 L85 25 Z" fill="url(#shieldBody)" stroke="#3a6a85" stroke-width="2"/>
-<path d="M50 10 L15 25 L15 55 C15 80 30 100 50 112 L50 10 Z" fill="url(#shieldHighlight)"/>
+<circle cx="100" cy="100" r="90" fill="url(#sphereGrad)" stroke="#00d4ff" stroke-width="2" opacity="0.8"/>
+<path d="M100 60 Q80 60 75 75 Q70 90 80 100 Q90 110 100 110 Q110 110 120 100 Q130 90 125 75 Q120 60 100 60 Z" fill="#ffffff" opacity="0.9"/>
+<path d="M60 120 Q80 110 100 115 Q120 120 140 110" stroke="url(#flowGrad)" stroke-width="3" fill="none" opacity="0.7"/>
+<path d="M50 140 Q75 130 100 135 Q125 140 150 130" stroke="url(#flowGrad)" stroke-width="2" fill="none" opacity="0.5"/>
+<circle cx="100" cy="70" r="8" fill="#ffffff" opacity="0.6"/>
 </svg>
 </div>
 <h1>Amnezia VPN</h1>
 <p class="subtitle">Нужен стабильный интернет для навигатора, музыки и мессенджеров? Держите проверенное приложение для Android.</p>
-<a id="download-link" class="download-btn" href="#">Скачать APK для Android</a>
+<div class="action-buttons">
+<button class="action-btn" onclick="openModal('offer')">Документы</button>
+<button class="action-btn" onclick="openModal('tariff')">Тариф</button>
+</div>
 <div class="features">
 <div class="feature"><div class="feature-icon">⚡</div><div class="feature-title">Быстрая скорость</div><div class="feature-text">22 сервера для оптимального подключения</div></div>
 <div class="feature"><div class="feature-icon">🔄</div><div class="feature-title">Автообновление</div><div class="feature-text">Не нужно переустанавливать вручную</div></div>
 <div class="feature"><div class="feature-icon">🔒</div><div class="feature-title">Безопасность</div><div class="feature-text">Защита данных и приватность</div></div>
 <div class="feature"><div class="feature-icon">📱</div><div class="feature-title">Все Android</div><div class="feature-text">Работает на всех Android-устройствах</div></div>
 </div>
-<div class="help-section">
-<button class="help-btn" onclick="toggleHelp()">Помощь</button>
-<div class="help-menu" id="helpMenu">
-<a href="#" class="help-item" onclick="event.preventDefault()"><span class="help-item-icon">📞</span>Поддержка</a>
-<a class="help-item" onclick="toggleDocs()"><span class="help-item-icon"></span>Документы</a>
-<div class="submenu" id="docsSubmenu">
-<a href="#" class="help-item" onclick="event.preventDefault();openModal('privacy')"><span class="help-item-icon">📜</span>Политика конфиденциальности</a>
-<a href="#" class="help-item" onclick="event.preventDefault();openModal('offer')"><span class="help-item-icon"></span>Публичная оферта</a>
-</div>
-<a class="help-item" onclick="toggleTariff()"><span class="help-item-icon"></span>Тариф</a>
-<div class="submenu" id="tariffSubmenu">
-<div class="tariff-box">
-<div class="tariff-title">Тарифы Amnezia VPN</div>
-<div class="tariff-text">
-<b>2 дня</b> — бесплатно (пробный период)<br><br>
-<b>110 руб</b> — 1 месяц подписки<br><br>
-Оплата через СБП (RollyPay).<br>
-Автообновление подписки.
-</div>
-</div>
-</div>
-</div>
-</div>
+<a id="download-link" class="download-btn" href="#">Скачать APK для Android</a>
 <p class="version-info" id="version-info">Загрузка информации о версии...</p>
 <div class="footer"><p>© 2026 Amnezia VPN • Android APK</p></div>
-</div>
-
-<div class="modal" id="privacyModal">
-<div class="modal-content">
-<div class="modal-title">ПОЛИТИКА КОНФИДЕНЦИАЛЬНОСТИ</div>
-<div class="modal-text">
-<h3>1. Общие положения</h3>
-<p>1.1. Настоящая Политика конфиденциальности определяет принципы работы с информацией пользователей VPN-сервиса.</p>
-<h3>2. Какие данные мы собираем</h3>
-<p>2.1. Сервис собирает и хранит только технические идентификаторы, необходимые для работы:</p>
-<ul>
-<li>IP-адрес</li>
-<li>Технические идентификаторы устройств</li>
-</ul>
-<p>2.2. Сервис НЕ собирает и НЕ хранит:</p>
-<ul>
-<li>Историю посещенных сайтов</li>
-<li>Содержимое интернет-трафика</li>
-</ul>
-<h3>3. Хранение и защита данных</h3>
-<p>3.1. Данные хранятся на защищенных серверах в зашифрованном виде.</p>
-<p>3.2. Срок хранения — период действия подписки + 30 дней.</p>
-<h3>4. Передача данных третьим лицам</h3>
-<p>4.1. Мы НЕ передаем ваши данные третьим лицам.</p>
-<h3>5. Ваши права</h3>
-<p>5.1. Вы имеете право запросить удаление своих данных в любой момент.</p>
-</div>
-<button class="modal-close" onclick="closeModal('privacy')">Закрыть</button>
-</div>
 </div>
 
 <div class="modal" id="offerModal">
@@ -178,12 +104,25 @@ h1{font-size:3em;font-weight:900;margin-bottom:20px;letter-spacing:-1px}
 </div>
 </div>
 
+<div class="modal" id="tariffModal">
+<div class="modal-content">
+<div class="modal-title">ТАРИФЫ AMNEZIA VPN</div>
+<div class="modal-text">
+<h3>Пробный период</h3>
+<p><b>2 дня</b> — бесплатно</p>
+<h3>Подписка</h3>
+<p><b>110 руб</b> — 1 месяц подписки</p>
+<h3>Оплата</h3>
+<p>Оплата производится через СБП (RollyPay).</p>
+<p>Автообновление подписки.</p>
+</div>
+<button class="modal-close" onclick="closeModal('tariff')">Закрыть</button>
+</div>
+</div>
+
 <script>
-function toggleHelp(){document.getElementById('helpMenu').classList.toggle('open')}
-function toggleDocs(){document.getElementById('docsSubmenu').classList.toggle('open')}
-function toggleTariff(){document.getElementById('tariffSubmenu').classList.toggle('open')}
-function openModal(type){if(type==='privacy')document.getElementById('privacyModal').classList.add('open');if(type==='offer')document.getElementById('offerModal').classList.add('open')}
-function closeModal(type){if(type==='privacy')document.getElementById('privacyModal').classList.remove('open');if(type==='offer')document.getElementById('offerModal').classList.remove('open')}
+function openModal(type){if(type==='offer')document.getElementById('offerModal').classList.add('open');if(type==='tariff')document.getElementById('tariffModal').classList.add('open')}
+function closeModal(type){if(type==='offer')document.getElementById('offerModal').classList.remove('open');if(type==='tariff')document.getElementById('tariffModal').classList.remove('open')}
 const repo='serpentarium86-droid/amnezia-vpn-site';
 const apiUrl='https://api.github.com/repos/'+repo+'/releases/latest';
 fetch(apiUrl).then(r=>r.json()).then(data=>{if(data.assets&&data.assets.length>0){const apk=data.assets.find(a=>a.name.endsWith('.apk'))||data.assets[0];document.getElementById('download-link').href=apk.browser_download_url;document.getElementById('version-info').textContent='Версия: '+(data.tag_name||'latest')+' • Размер: '+(apk.size/1024/1024).toFixed(1)+' МБ • Обновлено: '+new Date(data.published_at).toLocaleDateString('ru-RU')}else{document.getElementById('version-info').textContent='Релиз пока не опубликован'}}).catch(()=>{document.getElementById('version-info').textContent='Не удалось загрузить информацию'});
