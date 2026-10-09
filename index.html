@@ -8,6 +8,10 @@
 *{margin:0;padding:0;box-sizing:border-box}
 body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;background:linear-gradient(180deg,#1E3A8A 0%,#0F172A 100%);color:#fff;min-height:100vh;display:flex;align-items:center;justify-content:center;padding:20px}
 .container{max-width:600px;text-align:center}
+.lang-switcher{position:fixed;top:20px;right:20px;z-index:100;background:linear-gradient(180deg,rgba(30,58,138,0.6) 0%,rgba(15,23,42,0.6) 100%);border:2px solid rgba(59,130,246,0.5);border-radius:50px;padding:8px 16px;cursor:pointer;font-size:1.5em;transition:all 0.2s;box-shadow:0 4px 15px rgba(0,0,0,0.4);display:flex;align-items:center;gap:8px}
+.lang-switcher:hover{transform:scale(1.1);border-color:#3B82F6;box-shadow:0 6px 20px rgba(59,130,246,0.5)}
+.lang-switcher:active{transform:scale(0.95)}
+.lang-label{font-size:0.45em;font-weight:bold;color:#93C5FD;letter-spacing:1px}
 .logo{width:200px;height:200px;margin:0 auto 30px;border-radius:50%;overflow:hidden;box-shadow:0 10px 40px rgba(59,130,246,0.4);border:3px solid rgba(99,102,241,0.5)}
 .logo img{width:100%;height:100%;object-fit:cover}
 h1{font-size:3em;font-weight:900;margin-bottom:20px;background:linear-gradient(90deg,#3B82F6,#6366F1);-webkit-background-clip:text;-webkit-text-fill-color:transparent;letter-spacing:-1px}
@@ -41,75 +45,216 @@ h1{font-size:3em;font-weight:900;margin-bottom:20px;background:linear-gradient(9
 .modal-close{display:block;margin:30px auto 0;background:linear-gradient(135deg,#3B82F6 0%,#6366F1 100%);color:#fff;border:2px solid #000;padding:15px 40px;border-radius:12px;font-size:1em;font-weight:600;cursor:pointer;transition:all 0.2s}
 .modal-close:hover{transform:translateY(-2px);box-shadow:0 8px 25px rgba(59,130,246,0.5)}
 .modal-close:active{transform:translateY(0)}
-@media(max-width:600px){h1{font-size:2.2em}.features{grid-template-columns:1fr}.download-btn{padding:18px 40px}.download-main{font-size:1.5em}.download-sub{font-size:1em}.modal-content{margin:20px auto;padding:20px}.action-buttons{flex-direction:column}}
+@media(max-width:600px){h1{font-size:2.2em}.features{grid-template-columns:1fr}.download-btn{padding:18px 40px}.download-main{font-size:1.5em}.download-sub{font-size:1em}.modal-content{margin:20px auto;padding:20px}.action-buttons{flex-direction:column}.lang-switcher{top:10px;right:10px;padding:6px 12px;font-size:1.3em}}
 </style>
 </head>
 <body>
+
+<button class="lang-switcher" id="langBtn" onclick="toggleLang()">
+<span id="langFlag">🇷🇺</span>
+<span class="lang-label" id="langLabel">RU</span>
+</button>
+
 <div class="container">
 <div class="logo">
 <img src="logo.jpg" alt="Amnezia VPN">
 </div>
 <h1>Amnezia VPN</h1>
-<p class="subtitle">Нужен стабильный интернет для навигатора, музыки и мессенджеров? Держите проверенное приложение для Android.</p>
-<a id="download-link" class="download-btn" href="#"><span class="download-main">СКАЧАТЬ</span><span class="download-sub">APK для Android</span></a>
+<p class="subtitle" id="subtitle">Нужен стабильный интернет для навигатора, музыки и мессенджеров? Держите проверенное приложение для Android.</p>
+<a id="download-link" class="download-btn" href="#"><span class="download-main" id="downloadMain">СКАЧАТЬ</span><span class="download-sub" id="downloadSub">APK для Android</span></a>
 <div class="action-buttons">
-<button class="action-btn" onclick="openModal('offer')">Документы</button>
-<button class="action-btn" onclick="openModal('tariff')">Тариф</button>
+<button class="action-btn" onclick="openModal('offer')" id="btnDocs">Документы</button>
+<button class="action-btn" onclick="openModal('tariff')" id="btnTariff">Тариф</button>
 </div>
 <div class="features">
-<div class="feature"><div class="feature-icon">⚡</div><div class="feature-title">Быстрая скорость</div><div class="feature-text">22 сервера для оптимального подключения</div></div>
-<div class="feature"><div class="feature-icon">🔄</div><div class="feature-title">Автообновление</div><div class="feature-text">Не нужно переустанавливать вручную</div></div>
-<div class="feature"><div class="feature-icon">🔒</div><div class="feature-title">Безопасность</div><div class="feature-text">Защита данных и приватность</div></div>
-<div class="feature"><div class="feature-icon"></div><div class="feature-title">Все Android</div><div class="feature-text">Работает на всех Android-устройствах</div></div>
+<div class="feature"><div class="feature-icon"></div><div class="feature-title" id="f1t">Быстрая скорость</div><div class="feature-text" id="f1d">22 сервера для оптимального подключения</div></div>
+<div class="feature"><div class="feature-icon">🔄</div><div class="feature-title" id="f2t">Автообновление</div><div class="feature-text" id="f2d">Не нужно переустанавливать вручную</div></div>
+<div class="feature"><div class="feature-icon">🔒</div><div class="feature-title" id="f3t">Безопасность</div><div class="feature-text" id="f3d">Защита данных и приватность</div></div>
+<div class="feature"><div class="feature-icon">📱</div><div class="feature-title" id="f4t">Все Android</div><div class="feature-text" id="f4d">Работает на всех Android-устройствах</div></div>
 </div>
 <p class="version-info" id="version-info">Загрузка информации о версии...</p>
-<div class="footer"><p>© 2026 Amnezia VPN • Android APK</p></div>
+<div class="footer"><p id="footer">© 2026 Amnezia VPN • Android APK</p></div>
 </div>
 
 <div class="modal" id="offerModal">
 <div class="modal-content">
-<div class="modal-title">ПУБЛИЧНАЯ ОФЕРТА</div>
-<div class="modal-text">
-<h3>1. Общие положения</h3>
-<p>1.1. Настоящий документ является официальным публичным предложением (офертой) VPN-сервиса.</p>
-<h3>2. Предмет договора</h3>
-<p>2.1. Исполнитель предоставляет Пользователю услуги защищенного интернет-соединения через VPN-сервер.</p>
-<h3>3. Стоимость и порядок оплаты</h3>
-<p>3.1. Тарифы:</p>
+<div class="modal-title" id="offerTitle">ПУБЛИЧНАЯ ОФЕРТА</div>
+<div class="modal-text" id="offerText">
+<h3 id="o1h">1. Общие положения</h3>
+<p id="o1p">1.1. Настоящий документ является официальным публичным предложением (офертой) VPN-сервиса.</p>
+<h3 id="o2h">2. Предмет договора</h3>
+<p id="o2p">2.1. Исполнитель предоставляет Пользователю услуги защищенного интернет-соединения через VPN-сервер.</p>
+<h3 id="o3h">3. Стоимость и порядок оплаты</h3>
+<p id="o3p1">3.1. Тарифы:</p>
 <ul>
-<li><b>3 дня</b> — бесплатно (пробный период)</li>
-<li><b>1 месяц</b> — 110 ₽</li>
+<li id="o3l1"><b>3 дня</b> — бесплатно (пробный период)</li>
+<li id="o3l2"><b>1 месяц</b> — 110 ₽</li>
 </ul>
-<p>3.2. Оплата производится через СБП (RollyPay).</p>
-<h3>4. Права и обязанности</h3>
-<p>4.1. Исполнитель обязуется предоставить доступ к VPN-серверу и обеспечить техническую поддержку.</p>
-<p>4.2. Пользователь обязуется не передавать ключи доступа третьим лицам и не использовать Сервис для противоправных действий.</p>
+<p id="o3p2">3.2. Оплата производится через СБП (RollyPay).</p>
+<h3 id="o4h">4. Права и обязанности</h3>
+<p id="o4p1">4.1. Исполнитель обязуется предоставить доступ к VPN-серверу и обеспечить техническую поддержку.</p>
+<p id="o4p2">4.2. Пользователь обязуется не передавать ключи доступа третьим лицам и не использовать Сервис для противоправных действий.</p>
 </div>
-<button class="modal-close" onclick="closeModal('offer')">Закрыть</button>
+<button class="modal-close" onclick="closeModal('offer')" id="closeBtn1">Закрыть</button>
 </div>
 </div>
 
 <div class="modal" id="tariffModal">
 <div class="modal-content">
-<div class="modal-title">ТАРИФЫ AMNEZIA VPN</div>
-<div class="modal-text">
-<h3>Пробный период</h3>
-<p><b>3 дня</b> — бесплатно</p>
-<h3>Подписка</h3>
-<p><b>110 руб</b> — 1 месяц подписки</p>
-<h3>Оплата</h3>
-<p>Оплата производится через СБП (RollyPay).</p>
+<div class="modal-title" id="tariffTitle">ТАРИФЫ AMNEZIA VPN</div>
+<div class="modal-text" id="tariffText">
+<h3 id="t1h">Пробный период</h3>
+<p id="t1p"><b>3 дня</b> — бесплатно</p>
+<h3 id="t2h">Подписка</h3>
+<p id="t2p"><b>110 руб</b> — 1 месяц подписки</p>
+<h3 id="t3h">Оплата</h3>
+<p id="t3p">Оплата производится через СБП (RollyPay).</p>
 </div>
-<button class="modal-close" onclick="closeModal('tariff')">Закрыть</button>
+<button class="modal-close" onclick="closeModal('tariff')" id="closeBtn2">Закрыть</button>
 </div>
 </div>
 
 <script>
+const translations = {
+  ru: {
+    subtitle: 'Нужен стабильный интернет для навигатора, музыки и мессенджеров? Держите проверенное приложение для Android.',
+    downloadMain: 'СКАЧАТЬ',
+    downloadSub: 'APK для Android',
+    btnDocs: 'Документы',
+    btnTariff: 'Тариф',
+    f1t: 'Быстрая скорость', f1d: '22 сервера для оптимального подключения',
+    f2t: 'Автообновление', f2d: 'Не нужно переустанавливать вручную',
+    f3t: 'Безопасность', f3d: 'Защита данных и приватность',
+    f4t: 'Все Android', f4d: 'Работает на всех Android-устройствах',
+    versionLoading: 'Загрузка информации о версии...',
+    versionFormat: 'Версия: {v} • Размер: {s} МБ • Обновлено: {d}',
+    noRelease: 'Релиз пока не опубликован',
+    loadError: 'Не удалось загрузить информацию',
+    footer: '© 2026 Amnezia VPN • Android APK',
+    offerTitle: 'ПУБЛИЧНАЯ ОФЕРТА',
+    o1h: '1. Общие положения', o1p: '1.1. Настоящий документ является официальным публичным предложением (офертой) VPN-сервиса.',
+    o2h: '2. Предмет договора', o2p: '2.1. Исполнитель предоставляет Пользователю услуги защищенного интернет-соединения через VPN-сервер.',
+    o3h: '3. Стоимость и порядок оплаты', o3p1: '3.1. Тарифы:',
+    o3l1: '<b>3 дня</b> — бесплатно (пробный период)',
+    o3l2: '<b>1 месяц</b> — 110 ₽',
+    o3p2: '3.2. Оплата производится через СБП (RollyPay).',
+    o4h: '4. Права и обязанности',
+    o4p1: '4.1. Исполнитель обязуется предоставить доступ к VPN-серверу и обеспечить техническую поддержку.',
+    o4p2: '4.2. Пользователь обязуется не передавать ключи доступа третьим лицам и не использовать Сервис для противоправных действий.',
+    tariffTitle: 'ТАРИФЫ AMNEZIA VPN',
+    t1h: 'Пробный период', t1p: '<b>3 дня</b> — бесплатно',
+    t2h: 'Подписка', t2p: '<b>110 руб</b> — 1 месяц подписки',
+    t3h: 'Оплата', t3p: 'Оплата производится через СБП (RollyPay).',
+    closeBtn: 'Закрыть',
+    langLabel: 'RU', langFlag: '🇺'
+  },
+  en: {
+    subtitle: 'Need stable internet for navigation, music and messengers? Get a trusted app for Android.',
+    downloadMain: 'DOWNLOAD',
+    downloadSub: 'APK for Android',
+    btnDocs: 'Documents',
+    btnTariff: 'Pricing',
+    f1t: 'Fast Speed', f1d: '22 servers for optimal connection',
+    f2t: 'Auto-Update', f2d: 'No need to reinstall manually',
+    f3t: 'Security', f3d: 'Data protection and privacy',
+    f4t: 'All Android', f4d: 'Works on all Android devices',
+    versionLoading: 'Loading version info...',
+    versionFormat: 'Version: {v} • Size: {s} MB • Updated: {d}',
+    noRelease: 'Release not published yet',
+    loadError: 'Failed to load info',
+    footer: '© 2026 Amnezia VPN • Android APK',
+    offerTitle: 'PUBLIC OFFER',
+    o1h: '1. General Provisions', o1p: '1.1. This document is an official public offer of the VPN service.',
+    o2h: '2. Subject of the Agreement', o2p: '2.1. The Provider grants the User access to secure internet connection via VPN server.',
+    o3h: '3. Pricing and Payment', o3p1: '3.1. Plans:',
+    o3l1: '<b>3 days</b> — free (trial period)',
+    o3l2: '<b>1 month</b> — 110 ₽',
+    o3p2: '3.2. Payment is made via SBP (RollyPay).',
+    o4h: '4. Rights and Obligations',
+    o4p1: '4.1. The Provider undertakes to provide access to the VPN server and ensure technical support.',
+    o4p2: '4.2. The User undertakes not to share access keys with third parties and not to use the Service for illegal activities.',
+    tariffTitle: 'AMNEZIA VPN PRICING',
+    t1h: 'Trial Period', t1p: '<b>3 days</b> — free',
+    t2h: 'Subscription', t2p: '<b>110 rub</b> — 1 month subscription',
+    t3h: 'Payment', t3p: 'Payment is made via SBP (RollyPay).',
+    closeBtn: 'Close',
+    langLabel: 'EN', langFlag: '🇬🇧'
+  }
+};
+
+let currentLang = localStorage.getItem('amnezia_lang') || 'ru';
+
+function applyLang() {
+  const t = translations[currentLang];
+  document.getElementById('subtitle').textContent = t.subtitle;
+  document.getElementById('downloadMain').textContent = t.downloadMain;
+  document.getElementById('downloadSub').textContent = t.downloadSub;
+  document.getElementById('btnDocs').textContent = t.btnDocs;
+  document.getElementById('btnTariff').textContent = t.btnTariff;
+  document.getElementById('f1t').textContent = t.f1t; document.getElementById('f1d').textContent = t.f1d;
+  document.getElementById('f2t').textContent = t.f2t; document.getElementById('f2d').textContent = t.f2d;
+  document.getElementById('f3t').textContent = t.f3t; document.getElementById('f3d').textContent = t.f3d;
+  document.getElementById('f4t').textContent = t.f4t; document.getElementById('f4d').textContent = t.f4d;
+  document.getElementById('footer').textContent = t.footer;
+  document.getElementById('langFlag').textContent = t.langFlag;
+  document.getElementById('langLabel').textContent = t.langLabel;
+  document.getElementById('offerTitle').textContent = t.offerTitle;
+  document.getElementById('o1h').textContent = t.o1h; document.getElementById('o1p').textContent = t.o1p;
+  document.getElementById('o2h').textContent = t.o2h; document.getElementById('o2p').textContent = t.o2p;
+  document.getElementById('o3h').textContent = t.o3h; document.getElementById('o3p1').textContent = t.o3p1;
+  document.getElementById('o3l1').innerHTML = t.o3l1; document.getElementById('o3l2').innerHTML = t.o3l2;
+  document.getElementById('o3p2').textContent = t.o3p2;
+  document.getElementById('o4h').textContent = t.o4h;
+  document.getElementById('o4p1').textContent = t.o4p1; document.getElementById('o4p2').textContent = t.o4p2;
+  document.getElementById('tariffTitle').textContent = t.tariffTitle;
+  document.getElementById('t1h').textContent = t.t1h; document.getElementById('t1p').innerHTML = t.t1p;
+  document.getElementById('t2h').textContent = t.t2h; document.getElementById('t2p').innerHTML = t.t2p;
+  document.getElementById('t3h').textContent = t.t3h; document.getElementById('t3p').textContent = t.t3p;
+  document.getElementById('closeBtn1').textContent = t.closeBtn;
+  document.getElementById('closeBtn2').textContent = t.closeBtn;
+  document.documentElement.lang = currentLang;
+  updateVersionText();
+}
+
+function toggleLang() {
+  currentLang = currentLang === 'ru' ? 'en' : 'ru';
+  localStorage.setItem('amnezia_lang', currentLang);
+  applyLang();
+}
+
+function updateVersionText() {
+  const t = translations[currentLang];
+  const el = document.getElementById('version-info');
+  const lastData = el.dataset.lastData;
+  if (!lastData) { el.textContent = t.versionLoading; return; }
+  try {
+    const d = JSON.parse(lastData);
+    el.textContent = t.versionFormat.replace('{v}', d.tag_name || 'latest').replace('{s}', d.size).replace('{d}', d.date);
+  } catch(e) { el.textContent = t.versionLoading; }
+}
+
 function openModal(type){if(type==='offer')document.getElementById('offerModal').classList.add('open');if(type==='tariff')document.getElementById('tariffModal').classList.add('open')}
 function closeModal(type){if(type==='offer')document.getElementById('offerModal').classList.remove('open');if(type==='tariff')document.getElementById('tariffModal').classList.remove('open')}
+
 const repo='serpentarium86-droid/amnezia-vpn-site';
 const apiUrl='https://api.github.com/repos/'+repo+'/releases/latest';
-fetch(apiUrl).then(r=>r.json()).then(data=>{if(data.assets&&data.assets.length>0){const apk=data.assets.find(a=>a.name.endsWith('.apk'))||data.assets[0];document.getElementById('download-link').href=apk.browser_download_url;document.getElementById('version-info').textContent='Версия: '+(data.tag_name||'latest')+' • Размер: '+(apk.size/1024/1024).toFixed(1)+' МБ • Обновлено: '+new Date(data.published_at).toLocaleDateString('ru-RU')}else{document.getElementById('version-info').textContent='Релиз пока не опубликован'}}).catch(()=>{document.getElementById('version-info').textContent='Не удалось загрузить информацию'});
+fetch(apiUrl).then(r=>r.json()).then(data=>{
+  if(data.assets&&data.assets.length>0){
+    const apk=data.assets.find(a=>a.name.endsWith('.apk'))||data.assets[0];
+    document.getElementById('download-link').href=apk.browser_download_url;
+    const size=(apk.size/1024/1024).toFixed(1);
+    const date=new Date(data.published_at).toLocaleDateString(currentLang==='ru'?'ru-RU':'en-US');
+    const lastData=JSON.stringify({tag_name:data.tag_name,size:size,date:date});
+    document.getElementById('version-info').dataset.lastData=lastData;
+    updateVersionText();
+  }else{
+    document.getElementById('version-info').textContent=translations[currentLang].noRelease;
+  }
+}).catch(()=>{
+  document.getElementById('version-info').textContent=translations[currentLang].loadError;
+});
+
+applyLang();
 </script>
 </body>
 </html>
