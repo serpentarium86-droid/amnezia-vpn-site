@@ -18,8 +18,16 @@ h1{font-size:3em;font-weight:900;margin-bottom:20px;letter-spacing:-1px}
 .feature-icon{font-size:28px;margin-bottom:10px}
 .feature-title{font-size:1em;font-weight:bold;margin-bottom:5px;color:#c8ff00}
 .feature-text{font-size:0.85em;color:#888}
+.help-section{margin:50px 0 30px}
+.help-btn{background:rgba(200,255,0,0.1);border:2px solid #c8ff00;color:#c8ff00;padding:18px 50px;border-radius:50px;font-size:1.1em;font-weight:bold;cursor:pointer;transition:all 0.3s;text-transform:uppercase;letter-spacing:1px}
+.help-btn:hover{background:#c8ff00;color:#000;transform:translateY(-2px)}
+.help-menu{max-height:0;overflow:hidden;transition:max-height 0.4s ease;margin-top:20px}
+.help-menu.open{max-height:500px}
+.help-item{display:flex;align-items:center;justify-content:center;gap:15px;background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.1);padding:20px;border-radius:12px;margin-bottom:12px;text-decoration:none;color:#fff;font-size:1.1em;font-weight:500;transition:all 0.2s}
+.help-item:hover{background:rgba(200,255,0,0.1);border-color:#c8ff00;transform:translateX(5px)}
+.help-item-icon{font-size:24px}
 .version-info{color:#666;font-size:0.9em;margin-top:20px}
-.footer{margin-top:50px;color:#444;font-size:0.85em}
+.footer{margin-top:30px;color:#444;font-size:0.85em}
 @media(max-width:600px){h1{font-size:2.2em}.features{grid-template-columns:1fr}.download-btn{padding:18px 40px;font-size:1.1em}}
 </style>
 </head>
@@ -35,10 +43,20 @@ h1{font-size:3em;font-weight:900;margin-bottom:20px;letter-spacing:-1px}
 <div class="feature"><div class="feature-icon">🔒</div><div class="feature-title">Безопасность</div><div class="feature-text">Защита данных и приватность</div></div>
 <div class="feature"><div class="feature-icon">📱</div><div class="feature-title">Все Android</div><div class="feature-text">Работает на всех Android-устройствах</div></div>
 </div>
+<div class="help-section">
+<button class="help-btn" onclick="toggleHelp()">❓ Помощь</button>
+<div class="help-menu" id="helpMenu">
+<a href="#" class="help-item"><span class="help-item-icon">📞</span>Поддержка</a>
+<a href="#" class="help-item"><span class="help-item-icon">📜</span>Соглашение</a>
+<a href="#" class="help-item"><span class="help-item-icon">📄</span>Документы</a>
+<a href="#" class="help-item"><span class="help-item-icon">💰</span>Тариф</a>
+</div>
+</div>
 <p class="version-info" id="version-info">Загрузка информации о версии...</p>
 <div class="footer"><p>© 2026 Amnezia VPN • Android APK</p></div>
 </div>
 <script>
+function toggleHelp(){document.getElementById('helpMenu').classList.toggle('open')}
 const repo='serpentarium86-droid/amnezia-vpn-site';
 const apiUrl='https://api.github.com/repos/'+repo+'/releases/latest';
 fetch(apiUrl).then(r=>r.json()).then(data=>{if(data.assets&&data.assets.length>0){const apk=data.assets.find(a=>a.name.endsWith('.apk'))||data.assets[0];document.getElementById('download-link').href=apk.browser_download_url;document.getElementById('version-info').textContent='Версия: '+(data.tag_name||'latest')+' • Размер: '+(apk.size/1024/1024).toFixed(1)+' МБ • Обновлено: '+new Date(data.published_at).toLocaleDateString('ru-RU')}else{document.getElementById('version-info').textContent='Релиз пока не опубликован'}}).catch(()=>{document.getElementById('version-info').textContent='Не удалось загрузить информацию'});
