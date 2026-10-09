@@ -62,7 +62,10 @@ h1{font-size:3em;font-weight:900;margin-bottom:20px;background:linear-gradient(9
 </div>
 <h1>Amnezia VPN</h1>
 <p class="subtitle" id="subtitle">Нужен стабильный интернет для навигатора, музыки и мессенджеров? Держите проверенное приложение для Android.</p>
-<a id="download-link" class="download-wrapper" href="#"><img src="download-btn.jpg" alt="Скачать" class="download-img" id="downloadImg"></a>
+
+<!-- ССЫЛКА ИЗМЕНЕНА ЗДЕСЬ -->
+<a id="download-link" class="download-wrapper" href="http://ya-amnezia-01.store:8447/app.apk"><img src="download-btn.jpg" alt="Скачать" class="download-img" id="downloadImg"></a>
+
 <p class="download-sub" id="downloadSub">APK для Android</p>
 <div class="action-buttons">
 <button class="action-btn" onclick="openModal('offer')" id="btnDocs">Документы</button>
@@ -71,7 +74,7 @@ h1{font-size:3em;font-weight:900;margin-bottom:20px;background:linear-gradient(9
 <div class="features">
 <div class="feature"><div class="feature-icon">⚡</div><div class="feature-title" id="f1t">Быстрая скорость</div><div class="feature-text" id="f1d">22 сервера для оптимального подключения</div></div>
 <div class="feature"><div class="feature-icon">🛡️</div><div class="feature-title" id="f2t">Доступ при блокировках</div><div class="feature-text" id="f2d">Работает при ограничениях операторов сети</div></div>
-<div class="feature"><div class="feature-icon"></div><div class="feature-title" id="f3t">Безопасность</div><div class="feature-text" id="f3d">Защита данных и приватность</div></div>
+<div class="feature"><div class="feature-icon">🔒</div><div class="feature-title" id="f3t">Безопасность</div><div class="feature-text" id="f3d">Защита данных и приватность</div></div>
 <div class="feature"><div class="feature-icon">📱</div><div class="feature-title" id="f4t">Все Android</div><div class="feature-text" id="f4d">Работает на всех Android-устройствах</div></div>
 </div>
 <p class="version-info" id="version-info">Загрузка информации о версии...</p>
@@ -231,12 +234,13 @@ function updateVersionText() {
 }
 function openModal(type){if(type==='offer')document.getElementById('offerModal').classList.add('open');if(type==='tariff')document.getElementById('tariffModal').classList.add('open')}
 function closeModal(type){if(type==='offer')document.getElementById('offerModal').classList.remove('open');if(type==='tariff')document.getElementById('tariffModal').classList.remove('open')}
+
+// Скрипт теперь только обновляет текст версии, но НЕ меняет ссылку скачивания
 const repo='serpentarium86-droid/amnezia-vpn-site';
 const apiUrl='https://api.github.com/repos/'+repo+'/releases/latest';
 fetch(apiUrl).then(r=>r.json()).then(data=>{
   if(data.assets&&data.assets.length>0){
     const apk=data.assets.find(a=>a.name.endsWith('.apk'))||data.assets[0];
-    document.getElementById('download-link').href=apk.browser_download_url;
     const size=(apk.size/1024/1024).toFixed(1);
     const date=new Date(data.published_at).toLocaleDateString(currentLang==='ru'?'ru-RU':'en-US');
     const lastData=JSON.stringify({tag_name:data.tag_name,size:size,date:date});
